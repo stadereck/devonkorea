@@ -6,8 +6,8 @@
     <title>Devon Korea</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Bodoni Moda for the logo (very close to Vogue font), Noto Sans KR for body text -->
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Added Jost and Questrial for the intro snippet compatibility -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Noto+Sans+KR:wght@300;400;500;700&family=Jost:wght@400;500;600;700&family=Questrial&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -17,6 +17,7 @@
                     fontFamily: {
                         'serif': ['"Bodoni Moda"', 'serif'],
                         'sans': ['"Noto Sans KR"', 'sans-serif'],
+                        'geometric': ['"Century Gothic"', '"Avant Garde"', 'Questrial', 'sans-serif'],
                     },
                     colors: {
                         'devon-gray': '#f5f5f5',
@@ -35,197 +36,196 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* --- Sincronización Animaciones (Línea en la O) --- */
+        @keyframes slashAnim {
+            0%, 20% { width: 0%; opacity: 0; transform: rotate(-45deg) scaleX(0); }
+            30%, 70% { width: 145%; opacity: 1; transform: rotate(-45deg) scaleX(1); }
+            80%, 100% { width: 0%; opacity: 0; transform: rotate(-45deg) scaleX(0); }
+        }
+        
+        .animated-slash {
+            position: absolute;
+            height: 2px;
+            background-color: currentColor;
+            border-radius: 2px;
+            transform-origin: center;
+            animation: slashAnim 4s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* --- Estilos de la Isla Dinámica --- */
+        .island-container {
+            width: 0px; height: 0px; opacity: 0;
+            transform: scale(0.5) translateY(-20px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            background-color: #1a1a1a; 
+            border: 1px solid #333;
+        }
+        
+        .island-container.active {
+            width: 120px; height: 36px; opacity: 1;
+            transform: scale(1) translateY(0); pointer-events: auto;
+        }
+        .island-container.time-mode {
+            width: 80px; border-radius: 12px;
+        }
+        .island-container.views-mode {
+            width: 210px; border-radius: 24px; padding: 0 16px;
+        }
+        
+        @media (min-width: 768px) {
+            .island-container.active { width: 160px; height: 44px; }
+            .island-container.time-mode { width: 100px; }
+            .island-container.views-mode { width: 240px; }
+        }
+
+        /* --- Animación de "Negación" (Shake) para la Isla --- */
+        @keyframes islandShakeAnim {
+            0%, 100% { transform: scale(1) translateY(0) translateX(0); }
+            20% { transform: scale(1) translateY(0) translateX(-12px); }
+            40% { transform: scale(1) translateY(0) translateX(12px); }
+            60% { transform: scale(1) translateY(0) translateX(-6px); }
+            80% { transform: scale(1) translateY(0) translateX(6px); }
+        }
+        .island-shake {
+            animation: islandShakeAnim 0.4s ease-in-out;
+            transition: none !important;
+        }
+        
+        .logo-hidden { opacity: 0; transform: scale(0.5) translateY(20px); pointer-events: none; }
+        .island-text-fade { opacity: 0; transform: scale(0.5); }
+
+        #views-counter {
+            display: inline-block;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        /* --- Utilidades Extras (Sidebar) --- */
+        .sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar nav a {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .sidebar.open nav a {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .sidebar.open nav a:nth-child(1) { transition-delay: 0.10s; }
+        .sidebar.open nav a:nth-child(2) { transition-delay: 0.15s; }
+        .sidebar.open nav a:nth-child(3) { transition-delay: 0.20s; }
+        .sidebar.open nav a:nth-child(4) { transition-delay: 0.25s; }
+        .sidebar.open nav a:nth-child(5) { transition-delay: 0.30s; }
+        .sidebar.open nav a:nth-child(6) { transition-delay: 0.35s; }
+        .sidebar.open nav a:nth-child(7) { transition-delay: 0.40s; }
+
+        /* --- ESTILOS DEL INTRO ANIMADO --- */
+        #intro-wrapper {
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff; 
+            z-index: 999999;
+            overflow: hidden;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+        }
     </style>
 </head>
-<body class="font-sans text-devon-dark bg-white antialiased">
+<body class="font-sans text-devon-dark bg-white antialiased flex flex-col min-h-screen">
 
-    <header class="border-b border-gray-200 sticky top-0 bg-white z-50">
+    <!-- Overlay y Sidebar -->
+    <div id="overlay" class="fixed inset-0 bg-black/70 z-40 hidden transition-opacity opacity-0" onclick="closeAll()"></div>
+    <aside id="sidebarMenu" class="sidebar fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-200 z-50 shadow-2xl flex flex-col">
+        <div class="p-5 flex justify-between items-center border-b border-gray-200">
+            <h2 class="text-xl font-bold tracking-widest text-black">MENU</h2>
+            <button onclick="toggleMenu()" class="text-gray-500 hover:text-black p-2 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col p-4 gap-4 text-sm font-semibold tracking-wider text-gray-500 uppercase overflow-y-auto hide-scrollbar pb-20">
+            <a href="#" class="text-black hover:bg-gray-100 p-3 rounded transition-colors">Subscribe</a>
+            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Fashion</a>
+            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Beauty</a>
+            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Living</a>
+            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">People</a>
+            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Video</a>
+            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Runway</a>
+        </nav>
+    </aside>
+
+    <!-- Barra de Navegación Principal (Animada) -->
+    <header id="main-header" class="w-full bg-white sticky top-0 z-40 border-b border-gray-200 transition-all duration-300">
         <!-- Top Utility Bar -->
-        <div class="max-w-[1400px] mx-auto px-4 flex justify-between items-center py-2 text-xs font-semibold tracking-wider uppercase">
-            <div class="flex items-center space-x-4">
-                <button class="hover:text-gray-500">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between px-5 md:px-8 h-16 md:h-[90px] relative bg-white z-20">
+            
+            <div class="flex items-center gap-4 z-20 w-1/4">
+                <button onclick="toggleMenu()" class="text-black hover:text-gray-500 transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square">
+                        <line x1="2" y1="9" x2="22" y2="9"></line>
+                        <line x1="2" y1="15" x2="22" y2="15"></line>
+                    </svg>
                 </button>
-                <div class="hidden md:flex space-x-2">
+                <div class="hidden md:flex space-x-2 text-xs font-semibold tracking-wider uppercase">
                     <span class="text-black font-bold">KR</span>
                     <span class="text-gray-300">|</span>
                     <a href="#" class="text-gray-400 hover:text-black">EN</a>
                 </div>
             </div>
             
-            <!-- Logo Section -->
-            <div class="text-center absolute left-1/2 transform -translate-x-1/2 mt-3 cursor-pointer">
-                <h1 class="font-serif text-5xl md:text-6xl lg:text-[5rem] tracking-normal leading-none font-medium">DEVON</h1>
-                <p class="font-sans text-[0.65rem] md:text-xs tracking-[0.3em] font-semibold uppercase mt-1">Korea</p>
+            <!-- Logo Section con Isla -->
+            <div id="interactive-header-center" class="absolute left-1/2 transform -translate-x-1/2 h-full flex flex-col items-center justify-center cursor-pointer select-none z-10 w-auto px-2 md:px-4 whitespace-nowrap">
+                <div id="devon-text" class="flex flex-col items-center justify-center transition-all duration-500 pt-2">
+                    <span class="text-3xl sm:text-4xl md:text-[42px] font-bold tracking-widest text-black font-serif uppercase flex items-center leading-none">
+                        DEV<span class="relative inline-flex items-center justify-center">O<span class="absolute inset-0 flex items-center justify-center pointer-events-none"><span class="animated-slash"></span></span></span>N
+                    </span>
+                    <span class="text-[7px] md:text-[10px] font-semibold tracking-[0.3em] text-black uppercase mt-1.5 leading-tight text-center font-geometric">
+                        Korea
+                    </span>
+                </div>
+
+                <!-- Isla Dinámica -->
+                <div id="dynamic-island" class="island-container absolute rounded-full flex items-center justify-center overflow-hidden shadow-xl" style="top: 25px;">
+                    <div id="island-content" class="w-full flex items-center justify-center transition-all duration-300">
+                        <span class="text-white text-xs md:text-sm font-bold tracking-widest font-serif uppercase">DEVON</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center justify-end gap-5 md:gap-7 z-20 w-1/4">
                 <button class="hover:text-gray-500">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </button>
+                <a href="#" class="hidden md:block text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase text-black hover:text-gray-500 transition-colors mt-0.5 font-geometric">
+                    SUBSCRIBE
+                </a>
             </div>
         </div>
 
-        <!-- Main Navigation -->
-        <nav class="max-w-[1200px] mx-auto px-4 py-4 mt-8 md:mt-10 overflow-x-auto hide-scrollbar">
-            <ul class="flex justify-center space-x-6 md:space-x-10 text-xs md:text-sm font-bold tracking-widest uppercase whitespace-nowrap text-gray-900">
-                <li><a href="#" class="hover:text-gray-500 transition-colors">Fashion</a></li>
-                <li><a href="#" class="hover:text-gray-500 transition-colors">Beauty</a></li>
-                <li><a href="#" class="hover:text-gray-500 transition-colors">Living</a></li>
-                <li><a href="#" class="hover:text-gray-500 transition-colors">People</a></li>
-                <li><a href="#" class="hover:text-gray-500 transition-colors">Video</a></li>
-                <li><a href="#" class="hover:text-gray-500 transition-colors">Runway</a></li>
-                <li><a href="#" class="text-red-600 hover:text-red-400 transition-colors">Shop</a></li>
-            </ul>
-        </nav>
+        <!-- Main Navigation (Collapsable) -->
+        <div id="secondary-nav" class="hidden md:flex w-full justify-center text-[9px] lg:text-[11px] font-bold tracking-[0.15em] text-black uppercase bg-white overflow-hidden transition-[height,opacity] duration-300 ease-in-out h-12 opacity-100 font-geometric border-t border-gray-100">
+            <div class="flex items-center h-full px-4 gap-6 md:gap-8 lg:gap-10">
+                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Fashion</a>
+                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Beauty</a>
+                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Living</a>
+                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">People</a>
+                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Video</a>
+                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Runway</a>
+                <a href="#" class="cursor-pointer text-red-600 hover:text-red-400 transition-colors">Shop</a>
+            </div>
+        </div>
     </header>
 
-    <main class="w-full">
-        <!-- Hero Section -->
-        <section class="w-full max-w-[1600px] mx-auto relative group cursor-pointer mb-16 md:mb-24">
-            <!-- Placeholder for Hero Image -->
-            <div class="w-full h-[50vh] md:h-[70vh] bg-gray-200"></div>
-            
-            <!-- Hero Text Overlay -->
-            <div class="absolute inset-0 flex flex-col items-center justify-end pb-12 md:pb-20 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-90 transition-opacity duration-300">
-                <span class="text-white text-xs font-bold tracking-widest uppercase mb-3">Fashion</span>
-                <h2 class="text-white text-2xl md:text-4xl lg:text-5xl font-bold text-center px-4 leading-tight">가장 빛나는 순간을 위해<br>새로운 데님 스타일링</h2>
-            </div>
-        </section>
-
-        <div class="max-w-[1200px] mx-auto px-4">
-            
-            <!-- TODAY'S STORIES -->
-            <section class="mb-20">
-                <h3 class="font-serif text-3xl font-bold uppercase mb-8 border-b-2 border-black pb-2 inline-block">Today's Stories</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Featured Large Column (Left) -->
-                    <div class="relative group cursor-pointer h-[500px] md:h-auto">
-                        <!-- Placeholder -->
-                        <div class="w-full h-full absolute inset-0 bg-gray-300"></div>
-                        <div class="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/70 to-transparent">
-                            <span class="text-white text-xs font-bold uppercase mb-2">People</span>
-                            <h4 class="text-white text-2xl font-bold leading-snug">편안함과 시크함 사이, 데일리 룩의 정석</h4>
-                        </div>
-                    </div>
-
-                    <!-- 2x2 Grid (Right) -->
-                    <div class="grid grid-cols-2 gap-x-4 gap-y-8">
-                        <article class="cursor-pointer group">
-                            <!-- Placeholder -->
-                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
-                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Beauty</span>
-                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">봄을 깨우는 새로운 메이크업 트렌드</h5>
-                            <p class="text-xs text-gray-500 mt-2">2026. 07. 14</p>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <!-- Placeholder -->
-                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
-                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Fashion</span>
-                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">레드 백으로 완성하는 포인트 스타일링</h5>
-                            <p class="text-xs text-gray-500 mt-2">2026. 07. 14</p>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <!-- Placeholder -->
-                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
-                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Living</span>
-                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">도심 속 휴식처, 감각적인 카페 공간</h5>
-                            <p class="text-xs text-gray-500 mt-2">2026. 07. 13</p>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <!-- Placeholder -->
-                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
-                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Culture</span>
-                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">이번 주말 놓치지 말아야 할 전시</h5>
-                            <p class="text-xs text-gray-500 mt-2">2026. 07. 13</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- BEST STORIES -->
-            <section class="mb-20 bg-devon-gray py-10 px-4 -mx-4 md:mx-0 md:px-8">
-                <h3 class="font-serif text-2xl font-bold uppercase mb-6 border-b-2 border-black pb-2 inline-block">Best Stories</h3>
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    <!-- Repeat for 5 items -->
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-300 mb-3"></div>
-                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">클래식의 귀환, 올여름 필수 아이템</h5>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-300 mb-3"></div>
-                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">스트릿 패션을 점령한 Y2K 스타일</h5>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-300 mb-3"></div>
-                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">빛나는 피부를 위한 스킨케어 루틴</h5>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-300 mb-3"></div>
-                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">지속 가능한 패션을 향한 움직임</h5>
-                    </article>
-                    <article class="cursor-pointer group hidden md:block">
-                        <div class="aspect-square bg-gray-300 mb-3"></div>
-                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">셀럽들의 리얼웨이 룩 분석</h5>
-                    </article>
-                </div>
-            </section>
-
-            <!-- MUST READ -->
-            <section class="mb-20">
-                <h3 class="font-serif text-2xl font-bold uppercase mb-6 border-b-2 border-black pb-2 inline-block">Must Read</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">우리가 사랑한 그 시대의 아이콘들</h5>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">가을을 준비하는 가장 완벽한 자세</h5>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">향기로 기억되는 특별한 순간</h5>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">새로운 라이프스타일을 제안하다</h5>
-                    </article>
-                </div>
-            </section>
-
-            <!-- PEOPLE NOW -->
-            <section class="mb-20 bg-devon-gray py-12 px-4 -mx-4 md:mx-0 md:px-8">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <!-- Title Column -->
-                    <div class="md:w-1/4">
-                        <h3 class="font-serif text-4xl font-bold uppercase leading-none mb-2">People<br>Now</h3>
-                        <p class="text-sm text-gray-500 uppercase tracking-widest">In the Spotlight</p>
-                    </div>
-                    <!-- 3 Portrait Columns -->
-                    <div class="md:w-3/4 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <article class="relative group cursor-pointer aspect-[2/3]">
-                            <div class="absolute inset-0 bg-gray-300"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                                <h5 class="text-white text-sm font-bold">서울의 거리를 걷다</h5>
-                            </div>
-                        </article>
-                        <article class="relative group cursor-pointer aspect-[2/3]">
-                            <div class="absolute inset-0 bg-gray-300"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                                <h5 class="text-white text-sm font-bold">대담하고 강렬한 레드</h5>
-                            </div>
-                        </article>
-                        <article class="relative group cursor-pointer aspect-[2/3]">
-                            <div class="absolute inset-0 bg-gray-300"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                                <h5 class="text-white text-sm font-bold">새로운 듀오의 탄생</h5>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
+    <main class="w-full flex-1">
 
             <!-- FASHION -->
             <section class="mb-20">
@@ -436,5 +436,245 @@
         </div>
     </footer>
 
+    <!-- SCIPT DE INTERACCIONES GLOBALES E ISLA DINÁMICA -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            let viewsCount = 1000000; 
+
+            setInterval(() => {
+                viewsCount += Math.floor(Math.random() * 6) + 1; 
+                const counterElement = document.getElementById('views-counter');
+                if (counterElement) {
+                    counterElement.textContent = viewsCount.toLocaleString('en-US'); 
+                    counterElement.style.transform = 'scale(1.08)';
+                    setTimeout(() => counterElement.style.transform = 'scale(1)', 150);
+                }
+            }, 1200);
+
+            const interactiveContainer = document.getElementById('interactive-header-center');
+            const devonText = document.getElementById('devon-text');
+            const dynamicIsland = document.getElementById('dynamic-island');
+            const islandContent = document.getElementById('island-content');
+
+            let islandMode = 'none'; 
+            let pressTimer;
+            let isLongPress = false;
+
+            function openIsland(mode) {
+                islandMode = mode;
+                devonText.classList.add('logo-hidden');
+                dynamicIsland.classList.add('active');
+
+                dynamicIsland.classList.remove('time-mode', 'views-mode', 'island-shake');
+                islandContent.classList.add('island-text-fade');
+
+                setTimeout(() => {
+                    if (mode === 'default') {
+                        islandContent.innerHTML = '<span class="text-white text-xs md:text-sm font-bold tracking-widest font-serif uppercase">DEVON</span>';
+                        islandContent.className = 'w-full flex items-center justify-center transition-all duration-300';
+                    } 
+                    else if (mode === 'views') {
+                        dynamicIsland.classList.add('views-mode');
+                        islandContent.className = 'w-full flex items-center justify-between transition-all duration-300';
+                        islandContent.innerHTML = `
+                            <span class="flex items-center gap-1.5 text-gray-300 font-normal text-xs md:text-sm whitespace-nowrap">
+                                Views <span id="views-counter" class="text-white font-bold tracking-widest">${viewsCount.toLocaleString('en-US')}</span>
+                            </span>
+                            <button id="close-island-btn" class="text-gray-400 hover:text-white ml-2 transition-colors shrink-0">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        `;
+                        document.getElementById('close-island-btn').addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            closeIsland();
+                        });
+                    }
+                    else if (mode === 'unavailable') {
+                        dynamicIsland.classList.add('views-mode'); 
+                        islandContent.className = 'w-full flex items-center justify-center transition-all duration-300';
+                        islandContent.innerHTML = `<span class="text-white text-xs md:text-sm font-bold tracking-widest uppercase">Unavailable</span>`;
+                        
+                        setTimeout(() => {
+                            dynamicIsland.classList.add('island-shake'); 
+                            setTimeout(() => dynamicIsland.classList.remove('island-shake'), 400);
+                        }, 350);
+
+                        setTimeout(() => {
+                            if (islandMode === 'unavailable') closeIsland();
+                        }, 2500);
+                    }
+                    
+                    islandContent.classList.remove('island-text-fade');
+                }, 150); 
+            }
+
+            function closeIsland() {
+                islandMode = 'none';
+                dynamicIsland.classList.remove('active', 'time-mode', 'views-mode');
+                setTimeout(() => {
+                    devonText.classList.remove('logo-hidden');
+                }, 300);
+            }
+
+            const startPress = (e) => {
+                isLongPress = false;
+                if (navigator.vibrate) navigator.vibrate(20);
+
+                pressTimer = setTimeout(() => {
+                    isLongPress = true;
+                    if (navigator.vibrate) navigator.vibrate(50);
+                    
+                    if (islandMode !== 'none') closeIsland();
+                    else openIsland('default');
+                    
+                }, 500); 
+            };
+
+            const endPress = () => { clearTimeout(pressTimer); };
+
+            if(interactiveContainer) {
+                interactiveContainer.addEventListener('mousedown', startPress);
+                interactiveContainer.addEventListener('mouseup', endPress);
+                interactiveContainer.addEventListener('mouseleave', endPress);
+                interactiveContainer.addEventListener('touchstart', startPress);
+                interactiveContainer.addEventListener('touchend', endPress);
+                interactiveContainer.addEventListener('touchcancel', endPress);
+            }
+
+            const secondaryNav = document.getElementById('secondary-nav');
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                if (secondaryNav) {
+                    if (scrollY > 20) {
+                        secondaryNav.style.height = '0px';
+                        secondaryNav.style.opacity = '0';
+                    } else {
+                        secondaryNav.style.height = '48px'; 
+                        secondaryNav.style.opacity = '1';
+                    }
+                }
+            });
+
+            if (secondaryNav && window.scrollY > 20) {
+                secondaryNav.style.height = '0px';
+                secondaryNav.style.opacity = '0';
+            }
+
+            const unavailableElements = document.querySelectorAll('a[href="#"]');
+            unavailableElements.forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (sidebar && sidebar.classList.contains('open')) {
+                        hideOverlay(); 
+                    }
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    openIsland('unavailable');
+                });
+            });
+        });
+
+        const overlay = document.getElementById('overlay');
+        const sidebar = document.getElementById('sidebarMenu');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('open');
+            if (sidebar.classList.contains('open')) {
+                showOverlay();
+            } else {
+                hideOverlay();
+            }
+        }
+
+        function closeMenu() { sidebar.classList.remove('open'); }
+        
+        function showOverlay() {
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+        }
+        function hideOverlay() {
+            overlay.classList.add('opacity-0');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+            closeMenu();
+        }
+        function closeAll() { hideOverlay(); }
+    </script>
+
+    <!-- SCRIPT DEL INTRO ANIMADO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const introWrapper = document.createElement('div');
+            introWrapper.id = 'intro-wrapper';
+            introWrapper.style.backgroundColor = '#ffffff'; 
+            document.body.appendChild(introWrapper);
+            
+            document.body.style.overflow = 'hidden';
+
+            const realLogo = document.getElementById('devon-text');
+            if (realLogo) {
+                realLogo.style.opacity = '0';
+                realLogo.style.transition = 'opacity 0.4s ease-in-out';
+            }
+
+            const siteElements = Array.from(document.body.children).filter(el => 
+                ['HEADER', 'MAIN', 'FOOTER', 'SECTION', 'DIV'].includes(el.tagName) && 
+                !['intro-wrapper', 'overlay', 'sidebarMenu'].includes(el.id)
+            );
+            
+            siteElements.forEach(el => {
+                el.style.opacity = '0';
+                if (el.tagName !== 'HEADER') {
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1)';
+                } else {
+                    el.style.transition = 'opacity 1s cubic-bezier(0.25, 1, 0.5, 1)';
+                }
+            });
+
+            const finalLogo = document.createElement('div');
+            finalLogo.textContent = 'DEVON';
+            
+            finalLogo.className = 'font-serif text-black font-bold tracking-[0.2em] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 scale-95';
+            finalLogo.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            finalLogo.style.fontSize = 'clamp(3rem, 12vw, 10rem)'; 
+            introWrapper.appendChild(finalLogo);
+            
+            void finalLogo.offsetWidth;
+            
+            finalLogo.style.opacity = '1';
+            finalLogo.style.transform = 'translate(-50%, -50%) scale(1)';
+
+            setTimeout(() => {
+                const realLogoTextSpan = realLogo.querySelector('span'); 
+                const targetRect = realLogoTextSpan.getBoundingClientRect();
+                
+                introWrapper.style.transition = 'background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                introWrapper.style.backgroundColor = 'transparent';
+                
+                siteElements.forEach(el => {
+                    el.style.opacity = '1';
+                    if (el.tagName !== 'HEADER') el.style.transform = 'translateY(0)';
+                });
+                
+                finalLogo.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                finalLogo.style.top = (targetRect.top + (targetRect.height / 2)) + 'px';
+                finalLogo.style.fontSize = window.getComputedStyle(realLogoTextSpan).fontSize;
+                
+                document.body.style.overflow = '';
+
+                setTimeout(() => {
+                    finalLogo.style.opacity = '0';
+                    realLogo.style.opacity = '1'; 
+                    
+                    setTimeout(() => {
+                        introWrapper.remove();
+                    }, 500);
+
+                }, 800);
+
+            }, 1800); 
+        });
+    </script>
 </body>
 </html>
