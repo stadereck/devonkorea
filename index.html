@@ -4,638 +4,435 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devon Korea</title>
+    
+    <!-- Google Fonts: 
+         Bodoni Moda (Logo)
+         Jost (Títulos en inglés gruesos)
+         Noto Sans KR (Texto Coreano) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Added Jost and Questrial for the intro snippet compatibility -->
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Noto+Sans+KR:wght@300;400;500;700&family=Jost:wght@400;500;600;700&family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Jost:wght@500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'serif': ['"Bodoni Moda"', 'serif'],
                         'sans': ['"Noto Sans KR"', 'sans-serif'],
-                        'geometric': ['"Century Gothic"', '"Avant Garde"', 'Questrial', 'sans-serif'],
+                        'serif': ['"Bodoni Moda"', 'serif'],
+                        'display': ['Jost', 'sans-serif'],
                     },
                     colors: {
-                        'devon-gray': '#f5f5f5',
-                        'devon-dark': '#222222',
+                        'vogue-gray': '#f5f5f5',
+                        'vogue-text-gray': '#888888',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom scrollbar for horizontal lists if needed, though hidden for clean look */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
+        /* Tipografía específica para los encabezados de sección igual a la captura */
+        .section-title {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 1.5rem;
         }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        /* --- Sincronización Animaciones (Línea en la O) --- */
-        @keyframes slashAnim {
-            0%, 20% { width: 0%; opacity: 0; transform: rotate(-45deg) scaleX(0); }
-            30%, 70% { width: 145%; opacity: 1; transform: rotate(-45deg) scaleX(1); }
-            80%, 100% { width: 0%; opacity: 0; transform: rotate(-45deg) scaleX(0); }
-        }
-        
-        .animated-slash {
-            position: absolute;
-            height: 2px;
-            background-color: currentColor;
-            border-radius: 2px;
-            transform-origin: center;
-            animation: slashAnim 4s infinite ease-in-out;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* --- Estilos de la Isla Dinámica --- */
-        .island-container {
-            width: 0px; height: 0px; opacity: 0;
-            transform: scale(0.5) translateY(-20px);
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            pointer-events: none;
-            background-color: #1a1a1a; 
-            border: 1px solid #333;
-        }
-        
-        .island-container.active {
-            width: 120px; height: 36px; opacity: 1;
-            transform: scale(1) translateY(0); pointer-events: auto;
-        }
-        .island-container.time-mode {
-            width: 80px; border-radius: 12px;
-        }
-        .island-container.views-mode {
-            width: 210px; border-radius: 24px; padding: 0 16px;
-        }
-        
         @media (min-width: 768px) {
-            .island-container.active { width: 160px; height: 44px; }
-            .island-container.time-mode { width: 100px; }
-            .island-container.views-mode { width: 240px; }
+            .section-title {
+                font-size: 34px;
+                margin-bottom: 2rem;
+            }
         }
 
-        /* --- Animación de "Negación" (Shake) para la Isla --- */
-        @keyframes islandShakeAnim {
-            0%, 100% { transform: scale(1) translateY(0) translateX(0); }
-            20% { transform: scale(1) translateY(0) translateX(-12px); }
-            40% { transform: scale(1) translateY(0) translateX(12px); }
-            60% { transform: scale(1) translateY(0) translateX(-6px); }
-            80% { transform: scale(1) translateY(0) translateX(6px); }
+        /* Enlaces secundarios (MORE >) */
+        .section-more {
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            color: #666;
         }
-        .island-shake {
-            animation: islandShakeAnim 0.4s ease-in-out;
-            transition: none !important;
-        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .logo-hidden { opacity: 0; transform: scale(0.5) translateY(20px); pointer-events: none; }
-        .island-text-fade { opacity: 0; transform: scale(0.5); }
-
-        #views-counter {
-            display: inline-block;
-            transition: transform 0.1s ease-out;
-            will-change: transform;
-        }
-
-        /* --- Utilidades Extras (Sidebar) --- */
-        .sidebar {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        .sidebar.open {
-            transform: translateX(0);
-        }
-
-        .sidebar nav a {
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .sidebar.open nav a {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .sidebar.open nav a:nth-child(1) { transition-delay: 0.10s; }
-        .sidebar.open nav a:nth-child(2) { transition-delay: 0.15s; }
-        .sidebar.open nav a:nth-child(3) { transition-delay: 0.20s; }
-        .sidebar.open nav a:nth-child(4) { transition-delay: 0.25s; }
-        .sidebar.open nav a:nth-child(5) { transition-delay: 0.30s; }
-        .sidebar.open nav a:nth-child(6) { transition-delay: 0.35s; }
-        .sidebar.open nav a:nth-child(7) { transition-delay: 0.40s; }
-
-        /* --- ESTILOS DEL INTRO ANIMADO --- */
+        /* Animación inicial Premium de DEVON */
         #intro-wrapper {
-            position: fixed;
-            inset: 0;
-            background-color: #ffffff; 
-            z-index: 999999;
-            overflow: hidden;
-            transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+            position: fixed; inset: 0; background-color: #ffffff; z-index: 999999;
+            overflow: hidden; transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
         }
     </style>
 </head>
-<body class="font-sans text-devon-dark bg-white antialiased flex flex-col min-h-screen">
+<body class="bg-white text-black font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- Overlay y Sidebar -->
-    <div id="overlay" class="fixed inset-0 bg-black/70 z-40 hidden transition-opacity opacity-0" onclick="closeAll()"></div>
-    <aside id="sidebarMenu" class="sidebar fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-200 z-50 shadow-2xl flex flex-col">
-        <div class="p-5 flex justify-between items-center border-b border-gray-200">
-            <h2 class="text-xl font-bold tracking-widest text-black">MENU</h2>
-            <button onclick="toggleMenu()" class="text-gray-500 hover:text-black p-2 transition-colors">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <nav class="flex flex-col p-4 gap-4 text-sm font-semibold tracking-wider text-gray-500 uppercase overflow-y-auto hide-scrollbar pb-20">
-            <a href="#" class="text-black hover:bg-gray-100 p-3 rounded transition-colors">Subscribe</a>
-            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Fashion</a>
-            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Beauty</a>
-            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Living</a>
-            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">People</a>
-            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Video</a>
-            <a href="#" class="hover:text-black hover:bg-gray-100 p-3 rounded transition-colors">Runway</a>
-        </nav>
-    </aside>
-
-    <!-- Barra de Navegación Principal (Animada) -->
-    <header id="main-header" class="w-full bg-white sticky top-0 z-40 border-b border-gray-200 transition-all duration-300">
-        <!-- Top Utility Bar -->
-        <div class="max-w-[1400px] mx-auto flex items-center justify-between px-5 md:px-8 h-16 md:h-[90px] relative bg-white z-20">
+    <!-- Barra de Navegación Principal -->
+    <header id="main-header" class="w-full bg-white z-40 relative border-b border-gray-100">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-4 relative bg-white z-20 flex flex-col items-center">
             
-            <div class="flex items-center gap-4 z-20 w-1/4">
-                <button onclick="toggleMenu()" class="text-black hover:text-gray-500 transition-colors">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square">
-                        <line x1="2" y1="9" x2="22" y2="9"></line>
-                        <line x1="2" y1="15" x2="22" y2="15"></line>
+            <!-- Botones flotantes a la derecha (Suscripción y Menú) -->
+            <div class="absolute right-4 md:right-8 top-6 flex items-center gap-4 z-30">
+                <button class="bg-black text-white text-[11px] font-bold px-4 py-2 hover:bg-gray-800 transition-colors">
+                    구독하기
+                </button>
+                <button class="text-black hover:text-gray-500 transition-colors">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square">
+                        <line x1="3" y1="8" x2="21" y2="8"></line>
+                        <line x1="3" y1="16" x2="21" y2="16"></line>
                     </svg>
                 </button>
-                <div class="hidden md:flex space-x-2 text-xs font-semibold tracking-wider uppercase">
-                    <span class="text-black font-bold">KR</span>
-                    <span class="text-gray-300">|</span>
-                    <a href="#" class="text-gray-400 hover:text-black">EN</a>
-                </div>
             </div>
             
-            <!-- Logo Section con Isla -->
-            <div id="interactive-header-center" class="absolute left-1/2 transform -translate-x-1/2 h-full flex flex-col items-center justify-center cursor-pointer select-none z-10 w-auto px-2 md:px-4 whitespace-nowrap">
-                <div id="devon-text" class="flex flex-col items-center justify-center transition-all duration-500 pt-2">
-                    <span class="text-3xl sm:text-4xl md:text-[42px] font-bold tracking-widest text-black font-serif uppercase flex items-center leading-none">
-                        DEV<span class="relative inline-flex items-center justify-center">O<span class="absolute inset-0 flex items-center justify-center pointer-events-none"><span class="animated-slash"></span></span></span>N
-                    </span>
-                    <span class="text-[7px] md:text-[10px] font-semibold tracking-[0.3em] text-black uppercase mt-1.5 leading-tight text-center font-geometric">
-                        Korea
-                    </span>
+            <!-- Logo Central -->
+            <div id="devon-text" class="flex flex-col items-center justify-center pt-2 pb-6 w-full opacity-0 transition-opacity duration-300">
+                <span class="text-4xl md:text-[52px] font-bold tracking-widest text-black font-serif uppercase leading-none">
+                    DEVON
+                </span>
+                <span class="text-[10px] md:text-[11px] font-display font-semibold tracking-[0.1em] text-black uppercase mt-2 leading-tight">
+                    KOREA
+                </span>
+            </div>
+
+            <!-- Menú de Categorías inferior -->
+            <nav class="w-full flex justify-center text-[11px] md:text-[13px] font-bold tracking-widest text-black uppercase bg-white font-display pb-4">
+                <div class="flex items-center gap-6 md:gap-10">
+                    <a href="#" class="hover:text-gray-500 transition-colors">Fashion</a>
+                    <a href="#" class="hover:text-gray-500 transition-colors">Beauty</a>
+                    <a href="#" class="hover:text-gray-500 transition-colors">Living</a>
+                    <a href="#" class="hover:text-gray-500 transition-colors">Culture</a>
+                    <a href="#" class="hover:text-gray-500 transition-colors">Video</a>
                 </div>
-
-                <!-- Isla Dinámica -->
-                <div id="dynamic-island" class="island-container absolute rounded-full flex items-center justify-center overflow-hidden shadow-xl" style="top: 25px;">
-                    <div id="island-content" class="w-full flex items-center justify-center transition-all duration-300">
-                        <span class="text-white text-xs md:text-sm font-bold tracking-widest font-serif uppercase">DEVON</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-end gap-5 md:gap-7 z-20 w-1/4">
-                <button class="hover:text-gray-500">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </button>
-                <a href="#" class="hidden md:block text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase text-black hover:text-gray-500 transition-colors mt-0.5 font-geometric">
-                    SUBSCRIBE
-                </a>
-            </div>
-        </div>
-
-        <!-- Main Navigation (Collapsable) -->
-        <div id="secondary-nav" class="hidden md:flex w-full justify-center text-[9px] lg:text-[11px] font-bold tracking-[0.15em] text-black uppercase bg-white overflow-hidden transition-[height,opacity] duration-300 ease-in-out h-12 opacity-100 font-geometric border-t border-gray-100">
-            <div class="flex items-center h-full px-4 gap-6 md:gap-8 lg:gap-10">
-                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Fashion</a>
-                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Beauty</a>
-                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Living</a>
-                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">People</a>
-                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Video</a>
-                <a href="#" class="cursor-pointer hover:text-gray-500 transition-colors">Runway</a>
-                <a href="#" class="cursor-pointer text-red-600 hover:text-red-400 transition-colors">Shop</a>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <main class="w-full flex-1">
-
-            <!-- FASHION -->
-            <section class="mb-20">
-                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
-                    <h3 class="font-serif text-2xl font-bold uppercase">Fashion</h3>
-                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
+    <main class="w-full flex-1 pb-20">
+        
+        <!-- Hero Banner (Captura 1 y 2) -->
+        <section class="w-full max-w-[1200px] mx-auto px-4 mb-16 mt-6">
+            <div class="w-full aspect-[4/3] md:aspect-[21/9] bg-gray-200 relative cursor-pointer group flex items-end justify-center pb-8 overflow-hidden">
+                <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors"></div>
+                <!-- Texto Overlay al fondo centro -->
+                <div class="relative z-10 text-center text-white px-4">
+                    <p class="text-[11px] md:text-xs font-bold font-sans drop-shadow-md">
+                        패션 아이템 &nbsp;|&nbsp; <span class="font-normal opacity-90">2026.07.06</span>
+                    </p>
                 </div>
+            </div>
+        </section>
+
+        <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+            
+            <!-- TODAY'S STORIES (Captura 2) -->
+            <section class="mb-20">
+                <h2 class="section-title">Today's Stories</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- 2x2 Grid (Left) -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">이번 시즌 트렌드 총정리</h5>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">아우터의 모든 것</h5>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">미니멀리즘의 미학</h5>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">액세서리로 포인트 주기</h5>
-                        </article>
-                    </div>
-                    <!-- Large Featured (Right) -->
-                    <div class="relative group cursor-pointer h-[400px] md:h-auto">
-                        <div class="absolute inset-0 bg-gray-300"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                            <span class="text-white text-xs font-bold uppercase mb-2">Trend</span>
-                            <h4 class="text-white text-2xl font-bold leading-snug">자유로운 영혼을 위한 보헤미안 룩</h4>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- BEAUTY -->
-            <section class="mb-20">
-                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
-                    <h3 class="font-serif text-2xl font-bold uppercase">Beauty</h3>
-                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Large Featured (Left) -->
-                    <div class="relative group cursor-pointer h-[400px] md:h-auto">
-                        <div class="absolute inset-0 bg-gray-300"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                            <span class="text-white text-xs font-bold uppercase mb-2">Makeup</span>
-                            <h4 class="text-white text-2xl font-bold leading-snug">아트가 된 디저트, 눈으로 즐기는 달콤함</h4>
-                        </div>
-                    </div>
-                    <!-- 2x2 Grid (Right) -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">향수 에디터의 추천 리스트</h5>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">건강한 모발을 위한 케어법</h5>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">마스크 속 피부 진정 솔루션</h5>
-                        </article>
-                        <article class="cursor-pointer group">
-                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
-                            <h5 class="text-sm font-bold leading-snug group-hover:underline">홀리데이 리미티드 에디션</h5>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- LIVING -->
-            <section class="mb-20">
-                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
-                    <h3 class="font-serif text-2xl font-bold uppercase">Living</h3>
-                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">나만의 취향을 담은 인테리어</h5>
-                        <p class="text-xs text-gray-500 mt-2">Home & Decor</p>
+                    <!-- Izquierda: 1 Imagen Grande Vertical -->
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[2/3] md:aspect-[3/4] bg-gray-200 w-full object-cover"></div>
                     </article>
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">미식가들을 위한 파인다이닝</h5>
-                        <p class="text-xs text-gray-500 mt-2">Food & Drink</p>
-                    </article>
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">마음을 치유하는 스테이케이션</h5>
-                        <p class="text-xs text-gray-500 mt-2">Travel</p>
-                    </article>
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">반려동물과 함께하는 슬기로운 생활</h5>
-                        <p class="text-xs text-gray-500 mt-2">Pet</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- CULTURE -->
-            <section class="mb-20">
-                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
-                    <h3 class="font-serif text-2xl font-bold uppercase">Culture</h3>
-                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">주목받는 신진 작가 3인</h5>
-                        <p class="text-xs text-gray-500 mt-2">Art</p>
-                    </article>
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">스크린을 압도하는 연기력</h5>
-                        <p class="text-xs text-gray-500 mt-2">Movie</p>
-                    </article>
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">가을 밤을 채우는 플레이리스트</h5>
-                        <p class="text-xs text-gray-500 mt-2">Music</p>
-                    </article>
-                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
-                        <h5 class="text-sm font-bold leading-snug group-hover:underline">영감을 주는 건축물 탐방</h5>
-                        <p class="text-xs text-gray-500 mt-2">Architecture</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- LATEST STORIES -->
-            <section class="mb-20 pb-10 border-b border-gray-300">
-                <h3 class="font-serif text-2xl font-bold uppercase mb-6 border-b-2 border-black pb-2 inline-block">Latest Stories</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-                    <!-- Text List Grid -->
-                    <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
-                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">Beauty</span>
-                            <h5 class="text-sm font-bold group-hover:underline">매일 아침을 깨우는 산뜻한 클렌징</h5>
-                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
-                        </article>
-                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
-                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">Fashion</span>
-                            <h5 class="text-sm font-bold group-hover:underline">데님 팬츠를 입는 10가지 방법</h5>
-                            <p class="text-xs text-gray-400 mt-1">4 hours ago</p>
-                        </article>
-                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
-                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">People</span>
-                            <h5 class="text-sm font-bold group-hover:underline">지금 가장 핫한 모델 인터뷰</h5>
-                            <p class="text-xs text-gray-400 mt-1">6 hours ago</p>
-                        </article>
-                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
-                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">Living</span>
-                            <h5 class="text-sm font-bold group-hover:underline">감각적인 테이블 세팅 가이드</h5>
-                            <p class="text-xs text-gray-400 mt-1">10 hours ago</p>
-                        </article>
-                    </div>
                     
-                    <!-- App / Phone Promo Placeholder -->
-                    <div class="lg:col-span-1 flex justify-center lg:justify-end">
-                        <div class="w-[240px] h-[480px] bg-gray-800 rounded-[2rem] p-3 shadow-2xl relative">
-                            <!-- Inner screen placeholder -->
-                            <div class="w-full h-full bg-gray-100 rounded-[1.5rem] overflow-hidden flex flex-col">
-                                <!-- Fake app header -->
-                                <div class="bg-black text-white text-center py-4 font-serif text-xl">DEVON</div>
-                                <!-- Fake app content blocks -->
-                                <div class="p-2 space-y-2 flex-grow bg-white">
-                                    <div class="h-24 bg-gray-300 w-full"></div>
-                                    <div class="h-12 bg-gray-200 w-full"></div>
-                                    <div class="h-12 bg-gray-200 w-full"></div>
-                                    <div class="h-12 bg-gray-200 w-full"></div>
-                                    <div class="h-12 bg-gray-200 w-full"></div>
-                                </div>
+                    <!-- Derecha: Grid 2x2 de artículos más pequeños -->
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-10">
+                        <!-- Articulo 1 -->
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">패션 뉴스</p>
+                            <h3 class="text-sm md:text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">윌리 차바리아, 돌아온 탕자</h3>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by VOGUE</p>
+                        </article>
+                        <!-- Articulo 2 -->
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">패션 트렌드</p>
+                            <h3 class="text-sm md:text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">런웨이에서 먼저 찾은, 올가을 유행할 가방 3</h3>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 안건호, Alice Cary</p>
+                        </article>
+                        <!-- Articulo 3 -->
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                        </article>
+                        <!-- Articulo 4 -->
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BEST STORIES (Captura 3 y 4) -->
+            <section class="mb-20">
+                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+                    <h2 class="section-title !mb-0">Best Stories</h2>
+                    <div class="flex gap-2 text-gray-400">
+                        <button class="hover:text-black">←</button>
+                        <button class="hover:text-black">→</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">하버드 의대가 꼽은 '장 건강·염증 잡아주는' 최고의 과일 6가지</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 박수진</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">셀럽들이 사랑하는 여름 페디큐어 컬러 15</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 박수진</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">패션 아이템</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">이제는 청바지 대신 데님 스커트입니다</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.09 <span class="mx-1">|</span> by 안건호</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">가는 모발에 볼륨과 윤기를 더해주는 최고의 샴푸를 찾았습니다</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.09 <span class="mx-1">|</span> by 박수진</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- MUST READ (Captura 5) -->
+            <section class="mb-20">
+                <h2 class="section-title border-t border-black pt-8">Must Read</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">'오디세이' 홍보 투어에서 임신부 패션의 새로운 장을 연 앤 해서웨이</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.10 <span class="mx-1">|</span> by 오기쁨</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">남자 반바지의 완벽한 표본이 등장했습니다</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.08 <span class="mx-1">|</span> by 황혜원</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[3/4] bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">피부과 전문의들이 '젊어 보이는 손'을 위해 쓰는 핸드크림 5</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.08 <span class="mx-1">|</span> by 김주혜</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">셀럽 뉴스</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">소진-이동하, 깜짝 결혼 발표</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2023.10.06 <span class="mx-1">|</span> by 오기쁨</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- PEOPLE NOW (Captura 6) -->
+        <section class="w-full bg-[#f8f8f8] py-20 mb-20">
+            <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 flex flex-col justify-center mb-8 md:mb-0">
+                        <h2 class="font-display font-bold text-4xl md:text-5xl uppercase tracking-tighter leading-none mb-4">People<br>Now</h2>
+                        <p class="text-sm font-medium text-gray-500">지금, 보그가 주목하는 인물</p>
+                    </div>
+                    <div class="col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <!-- Card 1 -->
+                        <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                                <p class="text-[11px] font-bold mb-2">인터뷰</p>
+                                <h3 class="text-lg font-bold font-sans leading-snug">지금 가장 뜨거운 한국 모델, 우윤서와 파리에서 보낸 오후</h3>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                                <p class="text-[11px] font-bold mb-2">데코</p>
+                                <h3 class="text-lg font-bold font-sans leading-snug">마리사 베렌슨은 아직도 작은 노트를 들고 다닌다</h3>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                                <p class="text-[11px] font-bold mb-2">인터뷰</p>
+                                <h3 class="text-lg font-bold font-sans leading-snug">어거스트 배런의 옷은 어디에도 속하지 않는다</h3>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+            
+            <!-- FASHION (Captura 7 y 8) -->
+            <section class="mb-20">
+                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+                    <h2 class="section-title !mb-0">Fashion</h2>
+                    <a href="#" class="section-more hover:text-black">MORE ></a>
+                </div>
+                <!-- Layout Híbrido: 3 Columnas (2 de artículos pequeños, 1 grande) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Columnas 1 y 2: Grid 2x2 de artículos -->
+                    <div class="md:col-span-2 grid grid-cols-2 gap-x-6 gap-y-10">
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">칼립소에게서 영감을 얻은 샤를리즈 테론의 '오디세이' 홍보 투어 룩</h4>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 오기쁨</p>
+                        </article>
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">패션 뉴스</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">라반의 새 크리에이티브 디렉터, 올리비에 루스텡</h4>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 오기쁨</p>
+                        </article>
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">패션 아이템</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">핀터레스트 검색량 800% 증가! 폭염 속 완벽 아이템</h4>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 황혜원</p>
+                        </article>
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">패션 트렌드</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">퇴근 후 약속까지 책임지는 여름 오피스 룩</h4>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 안건호</p>
+                        </article>
+                    </div>
+                    <!-- Columna 3: 1 Imagen Vertical Grande con texto dentro -->
+                    <div class="md:col-span-1 h-full">
+                        <article class="cursor-pointer group h-full relative overflow-hidden">
+                            <div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                                <p class="text-[11px] font-bold mb-2">패션 아이템 <span class="font-normal opacity-80 mx-1">|</span> 2026.07.13</p>
+                                <h3 class="text-[20px] font-bold font-sans leading-snug">폴로 셔츠 입는 방법이 완전히 달라졌습니다</h3>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </section>
 
+            <!-- BEAUTY (Captura 9 y 10) -->
+            <section class="mb-20">
+                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+                    <h2 class="section-title !mb-0">Beauty</h2>
+                    <a href="#" class="section-more hover:text-black">MORE ></a>
+                </div>
+                <!-- Layout Inverso: 1 Grande a la izq, 2x2 a la derecha -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Columna 1: 1 Imagen Vertical Grande -->
+                    <div class="md:col-span-1 h-full">
+                        <article class="cursor-pointer group h-full relative overflow-hidden">
+                            <div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                                <p class="text-[11px] font-bold mb-2">뷰티 화보 <span class="font-normal opacity-80 mx-1">|</span> 2026.07.01</p>
+                                <h3 class="text-[20px] font-bold font-sans leading-snug">눈동자를 아름답게 관리하는 방법?</h3>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Columnas 2 y 3: Grid 2x2 -->
+                    <div class="md:col-span-2 grid grid-cols-2 gap-x-6 gap-y-10">
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">안 씻어도 된다며? 전문가가 '세척 완료' 채소도 다시 씻으라는 이유</h4>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 황혜원</p>
+                        </article>
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">셀럽들이 사랑하는 여름 페디큐어 컬러 15</h4>
+                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 박수진</p>
+                        </article>
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">축 처지고 풀풀 날린다면, 셀럽들이 선택한 스칸디나비아 커트</h4>
+                        </article>
+                        <article class="cursor-pointer group flex flex-col">
+                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
+                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">단단함의 조건, 뼈도 관리가 필요하다</h4>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIVING (Captura 11) -->
+            <section class="mb-20">
+                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+                    <h2 class="section-title !mb-0">Living</h2>
+                    <a href="#" class="section-more hover:text-black">MORE ></a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">여행</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">절벽 끝의 푸른 낙원, 아야나</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.06 <span class="mx-1">|</span> by 신메지</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">여행</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">멕시코에서 삶의 궤도를 되찾다</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.03 <span class="mx-1">|</span> by 황혜원</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">여행</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">마카오의 환대는 멈추는 법이 없다</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.03 <span class="mx-1">|</span> by 유승현</p>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-200 mb-4"></div>
+                        <p class="text-[11px] text-black font-bold mb-2">Living</p>
+                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">귀를 열고, 일상을 깨우다. 샥즈가 제안하는 다채로운 데일리 루틴</h4>
+                        <p class="text-[10px] text-vogue-text-gray">2026.07.02 <span class="mx-1">|</span> by 박한나</p>
+                    </article>
+                </div>
+            </section>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="max-w-[1200px] mx-auto px-4 py-12 text-center md:text-left">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div class="flex flex-col space-y-2">
-                <h4 class="font-bold text-sm uppercase mb-2">Devon Korea</h4>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">About Us</a>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Contact</a>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Subscribe</a>
+    <!-- FOOTER minimalista estilo captura -->
+    <footer class="border-t border-gray-200 py-12 text-center font-sans mt-10">
+        <div class="max-w-[1200px] mx-auto px-4 flex flex-col items-center">
+            <h1 class="font-serif text-3xl tracking-widest font-bold text-black uppercase mb-6">DEVON</h1>
+            <div class="flex flex-wrap justify-center gap-4 text-[11px] font-bold text-gray-500 uppercase tracking-widest font-display mb-8">
+                <a href="#" class="hover:text-black">About Us</a>
+                <a href="#" class="hover:text-black">Contact</a>
+                <a href="#" class="hover:text-black">Privacy Policy</a>
             </div>
-            <div class="flex flex-col space-y-2">
-                <h4 class="font-bold text-sm uppercase mb-2">Legal</h4>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Terms of Service</a>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Privacy Policy</a>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Cookie Policy</a>
-            </div>
-            <div class="flex flex-col space-y-2">
-                <h4 class="font-bold text-sm uppercase mb-2">Social</h4>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Instagram</a>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Facebook</a>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">Twitter / X</a>
-                <a href="#" class="text-xs text-gray-600 hover:text-black">YouTube</a>
-            </div>
-            <div class="flex flex-col space-y-4 md:items-end justify-center">
-                 <h1 class="font-serif text-4xl tracking-normal leading-none font-medium text-black">DEVON</h1>
-            </div>
-        </div>
-        <div class="border-t border-gray-200 pt-6 text-xs text-gray-400 text-center">
-            <p>&copy; 2026 DEVON KOREA. All rights reserved.</p>
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest">&copy; 2026 DEVON KOREA. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- SCIPT DE INTERACCIONES GLOBALES E ISLA DINÁMICA -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            let viewsCount = 1000000; 
-
-            setInterval(() => {
-                viewsCount += Math.floor(Math.random() * 6) + 1; 
-                const counterElement = document.getElementById('views-counter');
-                if (counterElement) {
-                    counterElement.textContent = viewsCount.toLocaleString('en-US'); 
-                    counterElement.style.transform = 'scale(1.08)';
-                    setTimeout(() => counterElement.style.transform = 'scale(1)', 150);
-                }
-            }, 1200);
-
-            const interactiveContainer = document.getElementById('interactive-header-center');
-            const devonText = document.getElementById('devon-text');
-            const dynamicIsland = document.getElementById('dynamic-island');
-            const islandContent = document.getElementById('island-content');
-
-            let islandMode = 'none'; 
-            let pressTimer;
-            let isLongPress = false;
-
-            function openIsland(mode) {
-                islandMode = mode;
-                devonText.classList.add('logo-hidden');
-                dynamicIsland.classList.add('active');
-
-                dynamicIsland.classList.remove('time-mode', 'views-mode', 'island-shake');
-                islandContent.classList.add('island-text-fade');
-
-                setTimeout(() => {
-                    if (mode === 'default') {
-                        islandContent.innerHTML = '<span class="text-white text-xs md:text-sm font-bold tracking-widest font-serif uppercase">DEVON</span>';
-                        islandContent.className = 'w-full flex items-center justify-center transition-all duration-300';
-                    } 
-                    else if (mode === 'views') {
-                        dynamicIsland.classList.add('views-mode');
-                        islandContent.className = 'w-full flex items-center justify-between transition-all duration-300';
-                        islandContent.innerHTML = `
-                            <span class="flex items-center gap-1.5 text-gray-300 font-normal text-xs md:text-sm whitespace-nowrap">
-                                Views <span id="views-counter" class="text-white font-bold tracking-widest">${viewsCount.toLocaleString('en-US')}</span>
-                            </span>
-                            <button id="close-island-btn" class="text-gray-400 hover:text-white ml-2 transition-colors shrink-0">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                            </button>
-                        `;
-                        document.getElementById('close-island-btn').addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            closeIsland();
-                        });
-                    }
-                    else if (mode === 'unavailable') {
-                        dynamicIsland.classList.add('views-mode'); 
-                        islandContent.className = 'w-full flex items-center justify-center transition-all duration-300';
-                        islandContent.innerHTML = `<span class="text-white text-xs md:text-sm font-bold tracking-widest uppercase">Unavailable</span>`;
-                        
-                        setTimeout(() => {
-                            dynamicIsland.classList.add('island-shake'); 
-                            setTimeout(() => dynamicIsland.classList.remove('island-shake'), 400);
-                        }, 350);
-
-                        setTimeout(() => {
-                            if (islandMode === 'unavailable') closeIsland();
-                        }, 2500);
-                    }
-                    
-                    islandContent.classList.remove('island-text-fade');
-                }, 150); 
-            }
-
-            function closeIsland() {
-                islandMode = 'none';
-                dynamicIsland.classList.remove('active', 'time-mode', 'views-mode');
-                setTimeout(() => {
-                    devonText.classList.remove('logo-hidden');
-                }, 300);
-            }
-
-            const startPress = (e) => {
-                isLongPress = false;
-                if (navigator.vibrate) navigator.vibrate(20);
-
-                pressTimer = setTimeout(() => {
-                    isLongPress = true;
-                    if (navigator.vibrate) navigator.vibrate(50);
-                    
-                    if (islandMode !== 'none') closeIsland();
-                    else openIsland('default');
-                    
-                }, 500); 
-            };
-
-            const endPress = () => { clearTimeout(pressTimer); };
-
-            if(interactiveContainer) {
-                interactiveContainer.addEventListener('mousedown', startPress);
-                interactiveContainer.addEventListener('mouseup', endPress);
-                interactiveContainer.addEventListener('mouseleave', endPress);
-                interactiveContainer.addEventListener('touchstart', startPress);
-                interactiveContainer.addEventListener('touchend', endPress);
-                interactiveContainer.addEventListener('touchcancel', endPress);
-            }
-
-            const secondaryNav = document.getElementById('secondary-nav');
-            
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if (secondaryNav) {
-                    if (scrollY > 20) {
-                        secondaryNav.style.height = '0px';
-                        secondaryNav.style.opacity = '0';
-                    } else {
-                        secondaryNav.style.height = '48px'; 
-                        secondaryNav.style.opacity = '1';
-                    }
-                }
-            });
-
-            if (secondaryNav && window.scrollY > 20) {
-                secondaryNav.style.height = '0px';
-                secondaryNav.style.opacity = '0';
-            }
-
-            const unavailableElements = document.querySelectorAll('a[href="#"]');
-            unavailableElements.forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (sidebar && sidebar.classList.contains('open')) {
-                        hideOverlay(); 
-                    }
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    openIsland('unavailable');
-                });
-            });
-        });
-
-        const overlay = document.getElementById('overlay');
-        const sidebar = document.getElementById('sidebarMenu');
-
-        function toggleMenu() {
-            sidebar.classList.toggle('open');
-            if (sidebar.classList.contains('open')) {
-                showOverlay();
-            } else {
-                hideOverlay();
-            }
-        }
-
-        function closeMenu() { sidebar.classList.remove('open'); }
-        
-        function showOverlay() {
-            overlay.classList.remove('hidden');
-            setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-        }
-        function hideOverlay() {
-            overlay.classList.add('opacity-0');
-            setTimeout(() => overlay.classList.add('hidden'), 300);
-            closeMenu();
-        }
-        function closeAll() { hideOverlay(); }
-    </script>
-
-    <!-- SCRIPT DEL INTRO ANIMADO -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+            // Animación limpia de inicio para DEVON
             const introWrapper = document.createElement('div');
             introWrapper.id = 'intro-wrapper';
             introWrapper.style.backgroundColor = '#ffffff'; 
             document.body.appendChild(introWrapper);
-            
             document.body.style.overflow = 'hidden';
 
             const realLogo = document.getElementById('devon-text');
-            if (realLogo) {
-                realLogo.style.opacity = '0';
-                realLogo.style.transition = 'opacity 0.4s ease-in-out';
-            }
-
-            const siteElements = Array.from(document.body.children).filter(el => 
-                ['HEADER', 'MAIN', 'FOOTER', 'SECTION', 'DIV'].includes(el.tagName) && 
-                !['intro-wrapper', 'overlay', 'sidebarMenu'].includes(el.id)
-            );
-            
-            siteElements.forEach(el => {
-                el.style.opacity = '0';
-                if (el.tagName !== 'HEADER') {
-                    el.style.transform = 'translateY(30px)';
-                    el.style.transition = 'opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1)';
-                } else {
-                    el.style.transition = 'opacity 1s cubic-bezier(0.25, 1, 0.5, 1)';
-                }
-            });
 
             const finalLogo = document.createElement('div');
             finalLogo.textContent = 'DEVON';
-            
-            finalLogo.className = 'font-serif text-black font-bold tracking-[0.2em] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 scale-95';
+            finalLogo.className = 'font-serif text-black font-bold tracking-[0.2em] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 scale-95 uppercase';
             finalLogo.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
             finalLogo.style.fontSize = 'clamp(3rem, 12vw, 10rem)'; 
             introWrapper.appendChild(finalLogo);
@@ -652,11 +449,6 @@
                 introWrapper.style.transition = 'background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                 introWrapper.style.backgroundColor = 'transparent';
                 
-                siteElements.forEach(el => {
-                    el.style.opacity = '1';
-                    if (el.tagName !== 'HEADER') el.style.transform = 'translateY(0)';
-                });
-                
                 finalLogo.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                 finalLogo.style.top = (targetRect.top + (targetRect.height / 2)) + 'px';
                 finalLogo.style.fontSize = window.getComputedStyle(realLogoTextSpan).fontSize;
@@ -665,14 +457,9 @@
 
                 setTimeout(() => {
                     finalLogo.style.opacity = '0';
-                    realLogo.style.opacity = '1'; 
-                    
-                    setTimeout(() => {
-                        introWrapper.remove();
-                    }, 500);
-
+                    if(realLogo) realLogo.style.opacity = '1'; 
+                    setTimeout(() => { introWrapper.remove(); }, 500);
                 }, 800);
-
             }, 1800); 
         });
     </script>
