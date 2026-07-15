@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devon Korea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Bodoni Moda for the logo (very close to Vogue font), Noto Sans KR for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['"Bodoni Moda"', 'serif'],
+                        'sans': ['"Noto Sans KR"', 'sans-serif'],
+                    },
+                    colors: {
+                        'devon-gray': '#f5f5f5',
+                        'devon-dark': '#222222',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for horizontal lists if needed, though hidden for clean look */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-devon-dark bg-white antialiased">
+
+    <header class="border-b border-gray-200 sticky top-0 bg-white z-50">
+        <!-- Top Utility Bar -->
+        <div class="max-w-[1400px] mx-auto px-4 flex justify-between items-center py-2 text-xs font-semibold tracking-wider uppercase">
+            <div class="flex items-center space-x-4">
+                <button class="hover:text-gray-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <div class="hidden md:flex space-x-2">
+                    <span class="text-black font-bold">KR</span>
+                    <span class="text-gray-300">|</span>
+                    <a href="#" class="text-gray-400 hover:text-black">EN</a>
+                </div>
+            </div>
+            
+            <!-- Logo Section -->
+            <div class="text-center absolute left-1/2 transform -translate-x-1/2 mt-3 cursor-pointer">
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-[5rem] tracking-normal leading-none font-medium">DEVON</h1>
+                <p class="font-sans text-[0.65rem] md:text-xs tracking-[0.3em] font-semibold uppercase mt-1">Korea</p>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button class="hover:text-gray-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="max-w-[1200px] mx-auto px-4 py-4 mt-8 md:mt-10 overflow-x-auto hide-scrollbar">
+            <ul class="flex justify-center space-x-6 md:space-x-10 text-xs md:text-sm font-bold tracking-widest uppercase whitespace-nowrap text-gray-900">
+                <li><a href="#" class="hover:text-gray-500 transition-colors">Fashion</a></li>
+                <li><a href="#" class="hover:text-gray-500 transition-colors">Beauty</a></li>
+                <li><a href="#" class="hover:text-gray-500 transition-colors">Living</a></li>
+                <li><a href="#" class="hover:text-gray-500 transition-colors">People</a></li>
+                <li><a href="#" class="hover:text-gray-500 transition-colors">Video</a></li>
+                <li><a href="#" class="hover:text-gray-500 transition-colors">Runway</a></li>
+                <li><a href="#" class="text-red-600 hover:text-red-400 transition-colors">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="w-full">
+        <!-- Hero Section -->
+        <section class="w-full max-w-[1600px] mx-auto relative group cursor-pointer mb-16 md:mb-24">
+            <!-- Placeholder for Hero Image -->
+            <div class="w-full h-[50vh] md:h-[70vh] bg-gray-200"></div>
+            
+            <!-- Hero Text Overlay -->
+            <div class="absolute inset-0 flex flex-col items-center justify-end pb-12 md:pb-20 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-90 transition-opacity duration-300">
+                <span class="text-white text-xs font-bold tracking-widest uppercase mb-3">Fashion</span>
+                <h2 class="text-white text-2xl md:text-4xl lg:text-5xl font-bold text-center px-4 leading-tight">가장 빛나는 순간을 위해<br>새로운 데님 스타일링</h2>
+            </div>
+        </section>
+
+        <div class="max-w-[1200px] mx-auto px-4">
+            
+            <!-- TODAY'S STORIES -->
+            <section class="mb-20">
+                <h3 class="font-serif text-3xl font-bold uppercase mb-8 border-b-2 border-black pb-2 inline-block">Today's Stories</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Featured Large Column (Left) -->
+                    <div class="relative group cursor-pointer h-[500px] md:h-auto">
+                        <!-- Placeholder -->
+                        <div class="w-full h-full absolute inset-0 bg-gray-300"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/70 to-transparent">
+                            <span class="text-white text-xs font-bold uppercase mb-2">People</span>
+                            <h4 class="text-white text-2xl font-bold leading-snug">편안함과 시크함 사이, 데일리 룩의 정석</h4>
+                        </div>
+                    </div>
+
+                    <!-- 2x2 Grid (Right) -->
+                    <div class="grid grid-cols-2 gap-x-4 gap-y-8">
+                        <article class="cursor-pointer group">
+                            <!-- Placeholder -->
+                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
+                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Beauty</span>
+                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">봄을 깨우는 새로운 메이크업 트렌드</h5>
+                            <p class="text-xs text-gray-500 mt-2">2026. 07. 14</p>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <!-- Placeholder -->
+                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
+                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Fashion</span>
+                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">레드 백으로 완성하는 포인트 스타일링</h5>
+                            <p class="text-xs text-gray-500 mt-2">2026. 07. 14</p>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <!-- Placeholder -->
+                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
+                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Living</span>
+                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">도심 속 휴식처, 감각적인 카페 공간</h5>
+                            <p class="text-xs text-gray-500 mt-2">2026. 07. 13</p>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <!-- Placeholder -->
+                            <div class="aspect-[4/3] bg-gray-200 mb-3 overflow-hidden"></div>
+                            <span class="text-red-600 text-xs font-bold uppercase block mb-1">Culture</span>
+                            <h5 class="text-sm md:text-base font-bold leading-snug group-hover:underline">이번 주말 놓치지 말아야 할 전시</h5>
+                            <p class="text-xs text-gray-500 mt-2">2026. 07. 13</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BEST STORIES -->
+            <section class="mb-20 bg-devon-gray py-10 px-4 -mx-4 md:mx-0 md:px-8">
+                <h3 class="font-serif text-2xl font-bold uppercase mb-6 border-b-2 border-black pb-2 inline-block">Best Stories</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <!-- Repeat for 5 items -->
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-300 mb-3"></div>
+                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">클래식의 귀환, 올여름 필수 아이템</h5>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-300 mb-3"></div>
+                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">스트릿 패션을 점령한 Y2K 스타일</h5>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-300 mb-3"></div>
+                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">빛나는 피부를 위한 스킨케어 루틴</h5>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-square bg-gray-300 mb-3"></div>
+                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">지속 가능한 패션을 향한 움직임</h5>
+                    </article>
+                    <article class="cursor-pointer group hidden md:block">
+                        <div class="aspect-square bg-gray-300 mb-3"></div>
+                        <h5 class="text-xs md:text-sm font-bold leading-snug group-hover:underline line-clamp-2">셀럽들의 리얼웨이 룩 분석</h5>
+                    </article>
+                </div>
+            </section>
+
+            <!-- MUST READ -->
+            <section class="mb-20">
+                <h3 class="font-serif text-2xl font-bold uppercase mb-6 border-b-2 border-black pb-2 inline-block">Must Read</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">우리가 사랑한 그 시대의 아이콘들</h5>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">가을을 준비하는 가장 완벽한 자세</h5>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">향기로 기억되는 특별한 순간</h5>
+                    </article>
+                    <article class="cursor-pointer group">
+                        <div class="aspect-[3/4] bg-gray-200 mb-3"></div>
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">새로운 라이프스타일을 제안하다</h5>
+                    </article>
+                </div>
+            </section>
+
+            <!-- PEOPLE NOW -->
+            <section class="mb-20 bg-devon-gray py-12 px-4 -mx-4 md:mx-0 md:px-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Title Column -->
+                    <div class="md:w-1/4">
+                        <h3 class="font-serif text-4xl font-bold uppercase leading-none mb-2">People<br>Now</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest">In the Spotlight</p>
+                    </div>
+                    <!-- 3 Portrait Columns -->
+                    <div class="md:w-3/4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <article class="relative group cursor-pointer aspect-[2/3]">
+                            <div class="absolute inset-0 bg-gray-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                                <h5 class="text-white text-sm font-bold">서울의 거리를 걷다</h5>
+                            </div>
+                        </article>
+                        <article class="relative group cursor-pointer aspect-[2/3]">
+                            <div class="absolute inset-0 bg-gray-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                                <h5 class="text-white text-sm font-bold">대담하고 강렬한 레드</h5>
+                            </div>
+                        </article>
+                        <article class="relative group cursor-pointer aspect-[2/3]">
+                            <div class="absolute inset-0 bg-gray-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                                <h5 class="text-white text-sm font-bold">새로운 듀오의 탄생</h5>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASHION -->
+            <section class="mb-20">
+                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
+                    <h3 class="font-serif text-2xl font-bold uppercase">Fashion</h3>
+                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 2x2 Grid (Left) -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">이번 시즌 트렌드 총정리</h5>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">아우터의 모든 것</h5>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">미니멀리즘의 미학</h5>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">액세서리로 포인트 주기</h5>
+                        </article>
+                    </div>
+                    <!-- Large Featured (Right) -->
+                    <div class="relative group cursor-pointer h-[400px] md:h-auto">
+                        <div class="absolute inset-0 bg-gray-300"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-white text-xs font-bold uppercase mb-2">Trend</span>
+                            <h4 class="text-white text-2xl font-bold leading-snug">자유로운 영혼을 위한 보헤미안 룩</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BEAUTY -->
+            <section class="mb-20">
+                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
+                    <h3 class="font-serif text-2xl font-bold uppercase">Beauty</h3>
+                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Large Featured (Left) -->
+                    <div class="relative group cursor-pointer h-[400px] md:h-auto">
+                        <div class="absolute inset-0 bg-gray-300"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-white text-xs font-bold uppercase mb-2">Makeup</span>
+                            <h4 class="text-white text-2xl font-bold leading-snug">아트가 된 디저트, 눈으로 즐기는 달콤함</h4>
+                        </div>
+                    </div>
+                    <!-- 2x2 Grid (Right) -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">향수 에디터의 추천 리스트</h5>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">건강한 모발을 위한 케어법</h5>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">마스크 속 피부 진정 솔루션</h5>
+                        </article>
+                        <article class="cursor-pointer group">
+                            <div class="aspect-[4/3] bg-gray-200 mb-3"></div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:underline">홀리데이 리미티드 에디션</h5>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIVING -->
+            <section class="mb-20">
+                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
+                    <h3 class="font-serif text-2xl font-bold uppercase">Living</h3>
+                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">나만의 취향을 담은 인테리어</h5>
+                        <p class="text-xs text-gray-500 mt-2">Home & Decor</p>
+                    </article>
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">미식가들을 위한 파인다이닝</h5>
+                        <p class="text-xs text-gray-500 mt-2">Food & Drink</p>
+                    </article>
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">마음을 치유하는 스테이케이션</h5>
+                        <p class="text-xs text-gray-500 mt-2">Travel</p>
+                    </article>
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">반려동물과 함께하는 슬기로운 생활</h5>
+                        <p class="text-xs text-gray-500 mt-2">Pet</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- CULTURE -->
+            <section class="mb-20">
+                <div class="flex justify-between items-end mb-6 border-b-2 border-black pb-2">
+                    <h3 class="font-serif text-2xl font-bold uppercase">Culture</h3>
+                    <a href="#" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black">+ More</a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">주목받는 신진 작가 3인</h5>
+                        <p class="text-xs text-gray-500 mt-2">Art</p>
+                    </article>
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">스크린을 압도하는 연기력</h5>
+                        <p class="text-xs text-gray-500 mt-2">Movie</p>
+                    </article>
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">가을 밤을 채우는 플레이리스트</h5>
+                        <p class="text-xs text-gray-500 mt-2">Music</p>
+                    </article>
+                    <article class="cursor-pointer group border-t border-gray-200 pt-4">
+                        <h5 class="text-sm font-bold leading-snug group-hover:underline">영감을 주는 건축물 탐방</h5>
+                        <p class="text-xs text-gray-500 mt-2">Architecture</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- LATEST STORIES -->
+            <section class="mb-20 pb-10 border-b border-gray-300">
+                <h3 class="font-serif text-2xl font-bold uppercase mb-6 border-b-2 border-black pb-2 inline-block">Latest Stories</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                    <!-- Text List Grid -->
+                    <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
+                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">Beauty</span>
+                            <h5 class="text-sm font-bold group-hover:underline">매일 아침을 깨우는 산뜻한 클렌징</h5>
+                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                        </article>
+                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
+                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">Fashion</span>
+                            <h5 class="text-sm font-bold group-hover:underline">데님 팬츠를 입는 10가지 방법</h5>
+                            <p class="text-xs text-gray-400 mt-1">4 hours ago</p>
+                        </article>
+                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
+                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">People</span>
+                            <h5 class="text-sm font-bold group-hover:underline">지금 가장 핫한 모델 인터뷰</h5>
+                            <p class="text-xs text-gray-400 mt-1">6 hours ago</p>
+                        </article>
+                        <article class="cursor-pointer group border-b border-gray-100 pb-4">
+                            <span class="text-red-600 text-[10px] font-bold uppercase mb-1 block">Living</span>
+                            <h5 class="text-sm font-bold group-hover:underline">감각적인 테이블 세팅 가이드</h5>
+                            <p class="text-xs text-gray-400 mt-1">10 hours ago</p>
+                        </article>
+                    </div>
+                    
+                    <!-- App / Phone Promo Placeholder -->
+                    <div class="lg:col-span-1 flex justify-center lg:justify-end">
+                        <div class="w-[240px] h-[480px] bg-gray-800 rounded-[2rem] p-3 shadow-2xl relative">
+                            <!-- Inner screen placeholder -->
+                            <div class="w-full h-full bg-gray-100 rounded-[1.5rem] overflow-hidden flex flex-col">
+                                <!-- Fake app header -->
+                                <div class="bg-black text-white text-center py-4 font-serif text-xl">DEVON</div>
+                                <!-- Fake app content blocks -->
+                                <div class="p-2 space-y-2 flex-grow bg-white">
+                                    <div class="h-24 bg-gray-300 w-full"></div>
+                                    <div class="h-12 bg-gray-200 w-full"></div>
+                                    <div class="h-12 bg-gray-200 w-full"></div>
+                                    <div class="h-12 bg-gray-200 w-full"></div>
+                                    <div class="h-12 bg-gray-200 w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="max-w-[1200px] mx-auto px-4 py-12 text-center md:text-left">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="flex flex-col space-y-2">
+                <h4 class="font-bold text-sm uppercase mb-2">Devon Korea</h4>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">About Us</a>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Contact</a>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Subscribe</a>
+            </div>
+            <div class="flex flex-col space-y-2">
+                <h4 class="font-bold text-sm uppercase mb-2">Legal</h4>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Terms of Service</a>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Privacy Policy</a>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Cookie Policy</a>
+            </div>
+            <div class="flex flex-col space-y-2">
+                <h4 class="font-bold text-sm uppercase mb-2">Social</h4>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Instagram</a>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Facebook</a>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">Twitter / X</a>
+                <a href="#" class="text-xs text-gray-600 hover:text-black">YouTube</a>
+            </div>
+            <div class="flex flex-col space-y-4 md:items-end justify-center">
+                 <h1 class="font-serif text-4xl tracking-normal leading-none font-medium text-black">DEVON</h1>
+            </div>
+        </div>
+        <div class="border-t border-gray-200 pt-6 text-xs text-gray-400 text-center">
+            <p>&copy; 2026 DEVON KOREA. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
