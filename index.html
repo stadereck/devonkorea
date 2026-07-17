@@ -36,16 +36,16 @@
         /* Tipografía específica para los encabezados de sección igual a la captura */
         .section-title {
             font-family: 'Jost', sans-serif;
-            font-weight: 700;
-            font-size: 28px;
-            letter-spacing: -0.02em;
+            font-weight: 600;
+            font-size: 32px;
+            letter-spacing: -0.01em;
             text-transform: uppercase;
             color: #000;
             margin-bottom: 1.5rem;
         }
         @media (min-width: 768px) {
             .section-title {
-                font-size: 34px;
+                font-size: 42px;
                 margin-bottom: 2rem;
             }
         }
@@ -88,14 +88,16 @@
                 </button>
             </div>
             
-            <!-- Logo Central -->
+            <!-- Logo Central con Instagram añadido -->
             <div id="devon-text" class="flex flex-col items-center justify-center pt-2 pb-6 w-full opacity-0 transition-opacity duration-300">
-                <span class="text-4xl md:text-[52px] font-bold tracking-widest text-black font-serif uppercase leading-none">
-                    DEVON
-                </span>
-                <span class="text-[10px] md:text-[11px] font-display font-semibold tracking-[0.1em] text-black uppercase mt-2 leading-tight">
-                    KOREA
-                </span>
+                <div class="relative flex flex-col items-center">
+                    <span class="text-[44px] md:text-[56px] font-bold tracking-[0.15em] text-black font-serif uppercase leading-none">
+                        DEVON
+                    </span>
+                    <span class="text-[12px] md:text-[14px] font-display font-bold tracking-[0.25em] text-black uppercase mt-1 ml-[0.15em]">
+                        KOREA
+                    </span>
+                </div>
             </div>
 
             <!-- Menú de Categorías inferior -->
@@ -115,14 +117,16 @@
         
         <!-- Hero Banner (Captura 1 y 2) -->
         <section class="w-full max-w-[1200px] mx-auto px-4 mb-16 mt-6">
-            <div class="w-full aspect-[4/3] md:aspect-[21/9] bg-gray-200 relative cursor-pointer group flex items-end justify-center pb-8 overflow-hidden">
-                <img src="https://img.vogue.co.kr/vogue/2026/07/style_6a4b19daba5c9-1920x960.jpg?x=1261&y=2165" alt="Hero Banner" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors z-10"></div>
+            <div class="w-full aspect-[4/3] md:aspect-[21/9] bg-[#e5e5e5] bg-cover bg-center relative cursor-pointer group flex items-end justify-center pb-12 overflow-hidden" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4b555c27a86-1920x960.jpg?x=1165&y=639');">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent transition-colors z-10"></div>
                 <!-- Texto Overlay al fondo centro -->
-                <div class="relative z-20 text-center text-white px-4">
-                    <p class="text-[11px] md:text-xs font-bold font-sans drop-shadow-md">
-                        패션 아이템 &nbsp;|&nbsp; <span class="font-normal opacity-90">2026.07.06</span>
+                <div class="relative z-20 text-center text-white px-4 drop-shadow-md">
+                    <p class="text-[12px] md:text-[13px] font-bold font-sans mb-3 opacity-90">
+                        패션 아이템 &nbsp;|&nbsp; 2026.07.06
                     </p>
+                    <h2 class="text-2xl md:text-[34px] font-bold font-sans leading-tight">
+                        '아저씨 옷'이던 체크 셔츠가 예뻐 보이기 시작했습니다
+                    </h2>
                 </div>
             </div>
         </section>
@@ -133,46 +137,58 @@
             <section class="mb-20">
                 <h2 class="section-title">Today's Stories</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Izquierda: 1 Imagen Grande Vertical -->
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[2/3] md:aspect-[3/4] bg-gray-200 w-full object-cover"></div>
+                    <!-- Izquierda: 1 Imagen Grande Vertical con Texto Overlay -->
+                    <article class="cursor-pointer group relative overflow-hidden">
+                        <div class="aspect-[2/3] md:aspect-[3/4] bg-gray-200 w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58606ceafca-scaled-960x1440.jpg?x=2080&y=1673?v=1784255102');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-white z-10">
+                            <p class="text-[12px] md:text-[13px] font-bold font-sans mb-3 opacity-90 tracking-wide">
+                                패션 뉴스 &nbsp;|&nbsp; 2026.07.16
+                            </p>
+                            <h3 class="text-[22px] md:text-[28px] font-bold font-sans leading-[1.3] group-hover:underline">
+                                더 가볍고 더 자유로운 샤넬 2026 가을/<br>겨울 프리 컬렉션
+                            </h3>
+                        </div>
                     </article>
                     
                     <!-- Derecha: Grid 2x2 de artículos más pequeños -->
                     <div class="grid grid-cols-2 gap-x-6 gap-y-10">
-                        <!-- Articulo 1 -->
                         <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58922d2faa1-scaled-759x500.jpg?x=1706&y=1833');"></div>
                             <p class="text-[11px] text-black font-bold mb-2">패션 뉴스</p>
                             <h3 class="text-sm md:text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">윌리 차바리아, 돌아온 탕자</h3>
                             <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by VOGUE</p>
                         </article>
-                        <!-- Articulo 2 -->
                         <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
+                            <div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5729a4a0ce8-759x500.jpg?x=1320&y=1458');"></div>
                             <p class="text-[11px] text-black font-bold mb-2">패션 트렌드</p>
                             <h3 class="text-sm md:text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">런웨이에서 먼저 찾은, 올가을 유행할 가방 3</h3>
                             <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 안건호, Alice Cary</p>
                         </article>
-                        <!-- Articulo 3 -->
                         <article class="cursor-pointer group flex flex-col">
                             <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
                         </article>
-                        <!-- Articulo 4 -->
                         <article class="cursor-pointer group flex flex-col">
                             <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
                         </article>
                     </div>
                 </div>
             </section>
+        </div>
 
-            <!-- BEST STORIES (Captura 3 y 4) -->
-            <section class="mb-20">
-                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+        <!-- BEST STORIES (Captura 3 y 4) -->
+        <section class="w-full relative mb-20 pt-8 pb-12">
+            <div class="absolute top-[45%] bottom-0 left-0 w-full bg-[#f4f4f4] z-0"></div>
+            <div class="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10">
+                <div class="flex items-center justify-between mb-8">
                     <h2 class="section-title !mb-0">Best Stories</h2>
-                    <div class="flex gap-2 text-gray-400">
-                        <button class="hover:text-black">←</button>
-                        <button class="hover:text-black">→</button>
+                    <div class="flex gap-4 text-gray-400">
+                        <button class="hover:text-black transition-colors">
+                            <svg width="36" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square"><line x1="20" y1="12" x2="4" y2="12"></line><polyline points="10 18 4 12 10 6"></polyline></svg>
+                        </button>
+                        <button class="hover:text-black transition-colors">
+                            <svg width="36" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg>
+                        </button>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -201,11 +217,13 @@
                         <p class="text-[10px] text-vogue-text-gray">2026.07.09 <span class="mx-1">|</span> by 박수진</p>
                     </article>
                 </div>
-            </section>
+            </div>
+        </section>
 
+        <div class="max-w-[1200px] mx-auto px-4 md:px-6">
             <!-- MUST READ (Captura 5) -->
             <section class="mb-20">
-                <h2 class="section-title border-t border-black pt-8">Must Read</h2>
+                <h2 class="section-title mb-8">Must Read</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <article class="cursor-pointer group">
                         <div class="aspect-square bg-gray-200 mb-4"></div>
@@ -244,7 +262,6 @@
                         <p class="text-sm font-medium text-gray-500">지금, 보그가 주목하는 인물</p>
                     </div>
                     <div class="col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <!-- Card 1 -->
                         <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-6 left-6 right-6 text-white z-10">
@@ -252,7 +269,6 @@
                                 <h3 class="text-lg font-bold font-sans leading-snug">지금 가장 뜨거운 한국 모델, 우윤서와 파리에서 보낸 오후</h3>
                             </div>
                         </div>
-                        <!-- Card 2 -->
                         <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-6 left-6 right-6 text-white z-10">
@@ -260,7 +276,6 @@
                                 <h3 class="text-lg font-bold font-sans leading-snug">마리사 베렌슨은 아직도 작은 노트를 들고 다닌다</h3>
                             </div>
                         </div>
-                        <!-- Card 3 -->
                         <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-6 left-6 right-6 text-white z-10">
@@ -277,13 +292,11 @@
             
             <!-- FASHION (Captura 7 y 8) -->
             <section class="mb-20">
-                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+                <div class="flex items-center justify-between pt-8 mb-6">
                     <h2 class="section-title !mb-0">Fashion</h2>
                     <a href="#" class="section-more hover:text-black">MORE ></a>
                 </div>
-                <!-- Layout Híbrido: 3 Columnas (2 de artículos pequeños, 1 grande) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Columnas 1 y 2: Grid 2x2 de artículos -->
                     <div class="md:col-span-2 grid grid-cols-2 gap-x-6 gap-y-10">
                         <article class="cursor-pointer group flex flex-col">
                             <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
@@ -310,7 +323,6 @@
                             <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 안건호</p>
                         </article>
                     </div>
-                    <!-- Columna 3: 1 Imagen Vertical Grande con texto dentro -->
                     <div class="md:col-span-1 h-full">
                         <article class="cursor-pointer group h-full relative overflow-hidden">
                             <div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0"></div>
@@ -326,13 +338,11 @@
 
             <!-- BEAUTY (Captura 9 y 10) -->
             <section class="mb-20">
-                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+                <div class="flex items-center justify-between pt-8 mb-6">
                     <h2 class="section-title !mb-0">Beauty</h2>
                     <a href="#" class="section-more hover:text-black">MORE ></a>
                 </div>
-                <!-- Layout Inverso: 1 Grande a la izq, 2x2 a la derecha -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Columna 1: 1 Imagen Vertical Grande -->
                     <div class="md:col-span-1 h-full">
                         <article class="cursor-pointer group h-full relative overflow-hidden">
                             <div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0"></div>
@@ -343,7 +353,6 @@
                             </div>
                         </article>
                     </div>
-                    <!-- Columnas 2 y 3: Grid 2x2 -->
                     <div class="md:col-span-2 grid grid-cols-2 gap-x-6 gap-y-10">
                         <article class="cursor-pointer group flex flex-col">
                             <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
@@ -373,7 +382,7 @@
 
             <!-- LIVING (Captura 11) -->
             <section class="mb-20">
-                <div class="flex items-center justify-between border-t border-black pt-8 mb-6">
+                <div class="flex items-center justify-between pt-8 mb-6">
                     <h2 class="section-title !mb-0">Living</h2>
                     <a href="#" class="section-more hover:text-black">MORE ></a>
                 </div>
@@ -440,7 +449,6 @@
                 </div>
                 
                 <div class="flex flex-col md:flex-row gap-6 relative">
-                    <!-- Artículos Izquierda (3 columnas en desktop) -->
                     <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
                         <!-- Fila 1 -->
                         <article class="cursor-pointer group flex flex-col">
@@ -503,11 +511,8 @@
                         </article>
                     </div>
 
-                    <!-- Widget Derecha: "DEVON KOREA Now on YOUTUBE" -->
                     <div class="w-full md:w-1/4 hidden md:block">
-                        <!-- Widget tipo celular (sticky para que baje contigo al hacer scroll) -->
                         <div class="sticky top-24 w-full bg-white border-[12px] border-[#222] rounded-[2.5rem] shadow-xl overflow-hidden flex flex-col" style="aspect-ratio: 9/19;">
-                            <!-- Header del Widget -->
                             <div class="p-4 flex flex-col border-b border-gray-100">
                                 <div class="flex items-center gap-3 mb-3">
                                     <div class="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white font-serif text-[12px] tracking-widest leading-none">D</div>
@@ -525,7 +530,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Lista de videos (Placeholders grises) -->
                             <div class="flex-1 overflow-y-auto bg-white p-3 flex flex-col gap-4 hide-scrollbar">
                                 <div class="flex gap-3">
                                     <div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
@@ -557,7 +561,6 @@
                                 </div>
                             </div>
 
-                            <!-- "Click here" Footer Widget -->
                             <div class="w-full bg-black text-white text-center py-3 text-[12px] font-bold tracking-widest cursor-pointer hover:bg-gray-900 transition-colors">
                                 click here »
                             </div>
@@ -566,7 +569,6 @@
                 </div>
             </section>
             
-            <!-- Botón TOP -->
             <div class="flex justify-end pb-8">
                 <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-black hover:text-gray-500 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
@@ -580,14 +582,16 @@
     <!-- FOOTER minimalista estilo captura (Negro) -->
     <footer class="bg-black text-white py-16 text-center font-sans mt-0 relative z-[9999]">
         <div class="max-w-[1200px] mx-auto px-4 flex flex-col items-center relative z-20">
-            <!-- Logo Central -->
+            <!-- Logo Central del Footer con Instagram añadido -->
             <div class="flex flex-col items-center justify-center mb-10">
-                <span class="text-4xl md:text-[52px] font-bold tracking-widest text-white font-serif uppercase leading-none">
-                    DEVON
-                </span>
-                <span class="text-[10px] md:text-[11px] font-display font-semibold tracking-[0.1em] text-white uppercase mt-2 leading-tight">
-                    KOREA
-                </span>
+                <div class="relative flex flex-col items-center">
+                    <span class="text-[44px] md:text-[56px] font-bold tracking-[0.15em] text-white font-serif uppercase leading-none">
+                        DEVON
+                    </span>
+                    <span class="text-[12px] md:text-[14px] font-display font-bold tracking-[0.25em] text-white uppercase mt-1 ml-[0.15em]">
+                        KOREA
+                    </span>
+                </div>
             </div>
             
             <!-- Enlaces Coreanos -->
@@ -609,7 +613,6 @@
                     KOREA <span class="text-[10px]">▲</span>
                 </button>
                 
-                <!-- Dropdown Menu de País (Elevado con z-index) -->
                 <div id="country-dropdown" class="absolute bottom-[calc(100%+8px)] left-1/2 transform -translate-x-1/2 w-[280px] bg-white hidden flex-col z-[100] max-h-[380px] overflow-y-auto py-4 hide-scrollbar shadow-[0_0_40px_rgba(0,0,0,0.8)]">
                     <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">ARABIA</a>
                     <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">AUSTRALIA</a>
@@ -640,26 +643,22 @@
                 </div>
             </div>
 
-            <!-- Copyright -->
             <p class="text-[10px] text-[#666] uppercase tracking-widest font-bold">VOGUE.CO.KR IS OPERATED BY DOOSAN MAGAZINE</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Funcionalidad Simple y Directa del Menú de Países ---
             const countryBtn = document.getElementById('country-selector-btn');
             const countryDropdown = document.getElementById('country-dropdown');
 
             if (countryBtn && countryDropdown) {
-                // Al hacer clic en el botón, alternar (mostrar/ocultar)
                 countryBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     countryDropdown.classList.toggle('hidden');
                 });
 
-                // Cerrar si se hace clic fuera del menú
                 document.addEventListener('click', (e) => {
                     if (!countryBtn.contains(e.target) && !countryDropdown.contains(e.target)) {
                         countryDropdown.classList.add('hidden');
@@ -667,7 +666,6 @@
                 });
             }
 
-            // --- Animación limpia de inicio para DEVON ---
             const introWrapper = document.createElement('div');
             introWrapper.id = 'intro-wrapper';
             introWrapper.style.backgroundColor = '#ffffff'; 
