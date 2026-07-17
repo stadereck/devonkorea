@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-
-<html lang="ko">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>데본 코리아 (Devon Korea)</title>
-<link rel="icon" href="https://i.ibb.co/h191t3k2/Devon-Title-logo.png" type="image/png">
-    
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dhx58lnzb/image/upload/v1784267020/Devon_Favicon_Logo_l5whgz.png">
 <!-- Google Fonts: 
          Bodoni Moda (Logo)
          Jost (Títulos en inglés gruesos)
          Noto Sans KR (Texto Coreano) -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Jost:wght@500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Jost:wght@500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -66,6 +62,18 @@
             overflow: hidden;
             transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
         }
+
+        /* Protección de contenido */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        img, div {
+            -webkit-user-drag: none;
+        }
     </style>
 </head>
 <body class="bg-white text-black font-sans antialiased flex flex-col min-h-screen">
@@ -78,7 +86,7 @@
                     구독하기
                 </button>
 <button class="text-black hover:text-gray-500 transition-colors">
-<svg fill="none" height="28" stroke="currentColor" stroke-linecap="square" stroke-width="1.5" viewbox="0 0 24 24" width="28">
+<svg fill="none" height="28" stroke="currentColor" stroke-linecap="square" stroke-width="1.5" viewBox="0 0 24 24" width="28">
 <line x1="3" x2="21" y1="6" y2="6"></line>
 <line x1="3" x2="21" y1="12" y2="12"></line>
 <line x1="3" x2="21" y1="18" y2="18"></line>
@@ -116,8 +124,8 @@
 </div>
 <!-- Texto Overlay al fondo centro -->
 <div class="relative z-20 text-center text-white px-4 drop-shadow-md">
-<p class="text-[12px] md:text-[13px] font-normal font-sans mb-3 opacity-90">패션 아이템  |  2026.07.06</p>
-<h2 class="text-2xl md:text-[34px] font-semibold font-sans leading-tight">‘아저씨 옷’이던 체크 셔츠가 예뻐 보이기 시작했습니다</h2>
+<p class="text-[12px] md:text-[13px] font-normal font-sans mb-3 opacity-90">패션 트렌드 | 2026.07.06</p>
+<h2 class="text-2xl md:text-[34px] font-semibold font-sans leading-tight">'아저씨 옷'이던 체크 셔츠가 예뻐 보이기 시작했습니다</h2>
 </div>
 </div>
 </section>
@@ -132,39 +140,39 @@
 </div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
 <div class="absolute bottom-8 left-8 right-8 text-white z-10">
-<p class="text-[12px] md:text-[13px] font-normal font-sans mb-3 opacity-90 tracking-wide">패션 아이템 | 2026.07.14</p>
-<h3 class="text-[22px] md:text-[28px] font-semibold font-sans leading-[1.3] group-hover:underline">휴가 앞두고 급하게 사지 말고, 청바지와 스커트에 ‘여름 신발’</h3>
+<p class="text-[12px] md:text-[13px] font-normal font-sans mb-3 opacity-90 tracking-wide">패션 트렌드 | 2026.07.14</p>
+<h3 class="text-[22px] md:text-[28px] font-semibold font-sans leading-[1.3] group-hover:underline">휴가 앞두고 급하게 사지 말고, 청바지와 스커트에 '여름 신발'</h3>
 </div>
 </article>
 <!-- Derecha: Grid 2x2 de artículos más pequeños -->
 <div class="grid grid-cols-2 gap-x-10 gap-y-16">
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58606ceafca-scaled-960x1440.jpg?x=2080&amp;y=1673?v=1784258402');">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a572ec8a9278-960x1440.jpg?v=1784324404');">
 </div>
-<p class="text-[13px] text-black font-normal mb-3">패션 뉴스</p>
-<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">더 가볍고 더 자유로운 샤넬 2026 가을/겨울 프리 컬렉션</h3>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[13px] text-black font-normal mb-3">셀러브리티 스타일</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">옷 잘 입는 모델들이 '옷장 속 아이템'으로 완성한 바캉스 스타일!</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58922d2faa1-scaled-759x500.jpg?x=1706&amp;y=1833');">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58800183443-759x500.jpg?x=1185&amp;y=1490');">
 </div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">검은 머리 질렸다면? 제니퍼 로렌스처럼 '여름 브라운'이 답입니다</h3>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">딱 적당한 삶이 주는 행복, 스웨덴의 라이프스타일 '라곰'에 대하여</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5729a4a0ce8-759x500.jpg?x=1320&amp;y=1458');">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57427bd5f3f-scaled-759x500.jpg?x=2558&amp;y=2541');">
 </div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">영국 '보그' 에디터들이 꼽은, 종일 신어도 발이 멀쩡한 힐</h3>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">익명의 군중으로 살아가기, '줄리안 오피' 개인전</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58703f5a7c4-759x500.jpg?x=1170&amp;y=1564');">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a587f33d0f9a-759x500.jpg?x=1170&amp;y=1648');">
 </div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">프렌치 걸 vs 스칸디나비아 걸, 스타일 대결의 승자는?</h3>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">맨발로 소금 밟기, 숙면에 도움이 되는지 전문가에게 물었습니다</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 </div>
 </div>
@@ -178,13 +186,13 @@
 <h2 class="section-title !mb-0">Best Stories</h2>
 <div class="flex gap-4 text-gray-400">
 <button class="hover:text-black transition-colors">
-<svg fill="none" height="18" stroke="currentColor" stroke-linecap="square" stroke-width="0.5" viewbox="0 0 24 24" width="36">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="square" stroke-width="0.5" viewBox="0 0 24 24" width="36">
 <line x1="20" x2="4" y1="12" y2="12"></line>
 <polyline points="10 18 4 12 10 6"></polyline>
 </svg>
 </button>
 <button class="hover:text-black transition-colors">
-<svg fill="none" height="18" stroke="currentColor" stroke-linecap="square" stroke-width="0.5" viewbox="0 0 24 24" width="36">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="square" stroke-width="0.5" viewBox="0 0 24 24" width="36">
 <line x1="4" x2="20" y1="12" y2="12"></line>
 <polyline points="14 6 20 12 14 18"></polyline>
 </svg>
@@ -193,28 +201,28 @@
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
 <article class="cursor-pointer group">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a587b2a80b2a-759x500.jpg');"></div>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5839fd6dd91-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">지금 물방울무늬를 입는 가장 멋스러운 방법 5</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">브로슈 워커, 서울에첫글로벌플래그십 '메종서울' 오픈</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 <article class="cursor-pointer group">
 <div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a572c9ce78b0-scaled-759x500.jpg?x=1824&amp;y=2115');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">머리 길이는 유지하면서 갈라진 끝만 다듬는 헤어 커트를 해봤습니다</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.15</p>
 </article>
 <article class="cursor-pointer group">
 <div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55adcd878d1-scaled-759x500.jpg?x=1656&amp;y=1675');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">셀럽들이 사랑하는 여름 페디큐어 컬러 15</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.14</p>
 </article>
 <article class="cursor-pointer group">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57032512854-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58922d2faa1-scaled-759x500.jpg?x=1706&amp;y=1833');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">젠데이아, 날개 달린 드레스로 '오디세이' 홍보 투어 피날레 장식</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">검은 머리 질렸다면? 제니퍼 로렌스처럼 '여름 브라운'이 답입니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 </div>
 </div>
@@ -225,27 +233,27 @@
 <h2 class="section-title mb-8">Must Read</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
 <article class="cursor-pointer group">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55edb7d5892-scaled-759x500.jpg?x=2048&amp;y=2379');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57032512854-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">젠데이아, 날개 달린 드레스로 '오디세이' 홍보 투어 피날레 장식</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.15</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a547fe9573d6-scaled-759x500.jpg?x=2635&amp;y=2450');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">축 처지고 풀풀 날린다면, 셀럽들이 선택한 스칸디나비아 커트</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.13</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-[3/4] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55edb7d5892-scaled-759x500.jpg?x=2048&amp;y=2379');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">칼립소에게서 영감을 얻은 샤를리즈 테론의 '오디세이' 홍보 투어 룩</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.14</p>
 </article>
 <article class="cursor-pointer group">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f92d1c374f-759x500.jpg?x=1170&amp;y=1691');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">하버드 의대가 꼽은 '장 건강·염증 잡아주는' 최고의 과일 6가지</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group">
-<div class="aspect-[3/4] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5749f2da43e-759x500.jpg?x=1170&amp;y=1228');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5749f2da43e-759x500.jpg?x=1170&amp;y=1228');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">얼굴이 훨씬 어려 보이는, 볼 터치 바르는 법 3</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a56f97da231f-scaled-759x500.jpg?x=1707&amp;y=2548');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름엔 건강한 일본식 젤 네일이 대세입니다</h4>
 <p class="text-[12px] text-devon-text-gray">2026.07.16</p>
 </article>
 </div>
@@ -262,38 +270,38 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 <div class="md:col-span-2 grid grid-cols-2 gap-x-10 gap-y-16">
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a547fe9573d6-scaled-759x500.jpg?x=2635&amp;y=2450');"></div>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4b555c27a86-1920x960.jpg?x=1165&amp;y=639');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">축 처지고 풀풀 날린다면, 셀럽들이 선택한 스칸디나비아 커트</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">하버드 의대가 꼽은 '장 건강·염증 잡아주는' 최고의 과일 6가지</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.10</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f3ac3d838b-500x500.jpg?x=1537&amp;y=1729');"></div>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55998488a76-1920x960.jpg?x=1280&amp;y=1132');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">이제는 청바지 대신 데님 스커트입니다</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.09</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f74f423fef-500x500.jpg?x=1080&amp;y=1080');"></div>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a572ec8a9278-960x1440.jpg?v=1784324404');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름엔 건강한 일본식 젤 네일이 대세입니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.15</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58800183443-759x500.jpg?x=1185&amp;y=1490');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">가는 모발에 볼륨과 윤기를 더해주는 최고의 샴푸를 찾았습니다</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f691153486-500x500.jpg?x=1093&amp;y=1100');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름 유행하는 반바지를 입는 모든 방법</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.10</p>
 </article>
 </div>
 <div class="md:col-span-1 h-full">
 <article class="cursor-pointer group h-full relative overflow-hidden">
-<div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a2a75705fcad-scaled-500x500.jpg?x=2559&amp;y=1999');"></div>
+<div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57427bd5f3f-scaled-759x500.jpg?x=2558&amp;y=2541');"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent">
 </div>
 <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-<p class="text-[11px] font-bold mb-2"> | 2026.07.16</p>
-<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">렉서스가 밀란 디자인 위크에서 제시한 개인 공간의 미래에 대한 비전</h3>
+<p class="text-[11px] font-bold mb-2">패션 화보 | 2026.06.23</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">당신의 꿈속에서 연준이 보낸 시간</h3>
 </div>
 </article>
 </div>
@@ -308,37 +316,37 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 <div class="md:col-span-1 h-full">
 <article class="cursor-pointer group h-full relative overflow-hidden">
-<div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2025/09/style_68d20b0dd504e-700x1050.jpg?x=4113&amp;y=4948');"></div>
+<div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a587f33d0f9a-759x500.jpg?x=1170&amp;y=1648');"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
 </div>
 <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-<p class="text-[11px] font-bold mb-2"> | 2026.07.16</p>
-<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">코르티스, 지금 가장 새로운</h3>
+<p class="text-[11px] font-bold mb-2">패션 아이템 | 2026.07.17</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">탱크 톱은 이제 안녕! 2026년 여름은 긴팔 티셔츠의 시대입니다</h3>
 </div>
 </article>
 </div>
 <div class="md:col-span-2 grid grid-cols-2 gap-x-10 gap-y-16">
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a38a545d070e-scaled-700x1050.jpg?x=2389&amp;y=1702');"></div>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5839fd6dd91-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">당신의 꿈속에서 연준이 보낸 시간</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">영국 '보그' 에디터들이 꼽은, 종일 신어도 발이 멀쩡한 힐</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2025/08/style_6892e72e07969-700x1050.jpg?x=4777&amp;y=4617');"></div>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a572c9ce78b0-scaled-759x500.jpg?x=1824&amp;y=2115');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">그렇게 여름이 된 순간, 한로로</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">프렌치 걸 vs 스칸디나비아 걸, 스타일 대결의 승자는?</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.17</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5852d131d9a-scaled-759x500.jpg?x=1748&amp;y=1791');"></div>
-<p class="text-[13px] text-black font-normal mb-3"> | 2026.07.16</p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">유행 중인 미디스커트에 탱크 톱, 지지 하디드가 입으면?</h4>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55adcd878d1-scaled-759x500.jpg?x=1656&amp;y=1675');"></div>
+<p class="text-[13px] text-black font-normal mb-3">패션 트렌드 | 2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">지금 물방울무늬를 입는 가장 멋스러운 방법 5</h4>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5840f1168ca-759x500.jpg?x=1607&amp;y=1597');"></div>
-<p class="text-[13px] text-black font-normal mb-3"> | 2026.07.16</p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">티모시 샬라메와 데이비드 베컴은 월드컵 응원할 때 무엇을 입을까요?</h4>
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58922d2faa1-scaled-759x500.jpg?x=1706&amp;y=1833');"></div>
+<p class="text-[13px] text-black font-normal mb-3">뷰티 화보 | 2026.07.09</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">뷰티 전문가 8인이 꼽은 궁극의 브러시</h4>
 </article>
 </div>
 </div>
@@ -351,28 +359,28 @@
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
 <article class="cursor-pointer group">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5754ded6657-759x500.jpg?x=1179&amp;y=1179');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름, 티셔츠는 두 사이즈 크게 입으세요!</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5474d2b060e-759x500.jpg?x=899&amp;y=1011');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름 쉽게 근사해지는 법, 헐렁한 청바지에 ‘이것’만 매치하세요</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a3b7327462dd-scaled-960x1440.jpg?x=2003&amp;y=1883');"></div>
-<p class="text-[13px] text-black font-normal mb-3">뷰티 화보</p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">뷰티 전문가 8인이 꼽은 궁극의 브러시</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.09</p>
-</article>
-<article class="cursor-pointer group">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5498ea2074d-scaled-759x500.jpg?x=1991&amp;y=1956');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57032512854-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">정원의 향을 맡고, 흙의 중심을 잡는 도예가 이경환</h4>
 <p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a547fe9573d6-scaled-759x500.jpg?x=2635&amp;y=2450');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">마트 샴푸도 괜찮을까? 전문가들의 답은 의외였습니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55edb7d5892-scaled-759x500.jpg?x=2048&amp;y=2379');"></div>
+<p class="text-[13px] text-black font-normal mb-3">라이프</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">렉서스가 밀란 디자인 위크에서 제시한 개인 공간의 미래에 대한 비전</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.15</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5749f2da43e-759x500.jpg?x=1170&amp;y=1228');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">절벽 끝의 푸른 낙원, 아야나</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.06</p>
 </article>
 </div>
 </section>
@@ -384,22 +392,22 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5882cf0c4ec-scaled-759x500.jpg?x=1920&amp;y=2076');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">마트 샴푸도 괜찮을까? 전문가들의 답은 의외였습니다</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a1e9eb1293ce-500x500.jpg');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">절벽 끝의 푸른 낙원, 아야나</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a3b377a227f7-scaled-e1782265759522-500x500.jpg?x=1919&amp;y=2557');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4b555c27a86-1920x960.jpg?x=1165&amp;y=639');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">멕시코에서 삶의 궤도를 되찾다</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.03</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55998488a76-1920x960.jpg?x=1280&amp;y=1132');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">마카오의 환대는 멈추는 법이 없다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.03</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a572ec8a9278-960x1440.jpg?v=1784324404');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">과거와 현재, 나와 세상을 잇는 몸짓</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.13</p>
 </article>
 </div>
 </section>
@@ -412,60 +420,60 @@
 <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
 <!-- Fila 1 -->
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a3b2fc630f5f-500x500.jpg');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">마카오의 환대는 멈추는 법이 없다</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/5] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a546a5186da3-500x500.jpg');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">과거와 현재, 나와 세상을 잇는 몸짓</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4fb130e88bc-scaled-500x500.jpg?x=2565&amp;y=2134');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58800183443-759x500.jpg?x=1185&amp;y=1490');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">연애사 오픈? 테일러 스위프트가 2조원대 부자가 될 수 있었던 이유</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.10</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/5] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57427bd5f3f-scaled-759x500.jpg?x=2558&amp;y=2541');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">회화보다 적극적인 초대, '환경 미술' 목격자 자처하기</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.10</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a587f33d0f9a-759x500.jpg?x=1170&amp;y=1648');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">시청률 20% 돌파, 파죽지세 '김부장'의 매력과 논란</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.10</p>
 </article>
 <!-- Fila 2 -->
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a50785088065-scaled-500x500.jpg?x=2300&amp;y=2109');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5839fd6dd91-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">회화보다 적극적인 초대, ‘환경 미술’ 목격자 자처하기</h4>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">유행 중인 미디스커트에 탱크 톱, 지지 하디드가 입으면?</h4>
 <p class="text-[12px] text-devon-text-gray">2026.07.16</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f9dcb5fbc1-500x500.jpg?x=1052&amp;y=973');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a572c9ce78b0-scaled-759x500.jpg?x=1824&amp;y=2115');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">시청률 20% 돌파, 파죽지세 ‘김부장’의 매력과 논란</h4>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">티모시 샬라메와 데이비드 베컴은 월드컵 응원할 때 무엇을 입을까요?</h4>
 <p class="text-[12px] text-devon-text-gray">2026.07.16</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5734f431375-500x500.jpg?x=1170&amp;y=1201');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55adcd878d1-scaled-759x500.jpg?x=1656&amp;y=1675');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">유럽 폭염에 오히려 인기 폭발한 K-크림!</h4>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름, 티셔츠는 두 사이즈 크게 입으세요!</h4>
 <p class="text-[12px] text-devon-text-gray">2026.07.16</p>
 </article>
 <!-- Fila 3 -->
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-[4/5] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a570f1a6e88f-500x500.jpg?x=1080&amp;y=1080');"></div>
+<div class="aspect-[4/5] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58922d2faa1-scaled-759x500.jpg?x=1706&amp;y=1833');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">유럽 폭염에 오히려 인기 폭발한 K-크림!</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.15</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57032512854-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">헤일리 비버, 갭과 함께 1990년대 감성 녹인 데님 컬렉션 출시</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.15</p>
 </article>
 <article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5704e302221-500x500.jpg?x=1586&amp;y=1848');"></div>
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a547fe9573d6-scaled-759x500.jpg?x=2635&amp;y=2450');"></div>
 <p class="text-[13px] text-black font-normal mb-3"></p>
 <h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름에는 플립플롭이나 운동화 대신 로퍼를 신으세요</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
-</article>
-<article class="cursor-pointer group flex flex-col">
-<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a56f4c275560-500x500.jpg?x=1188&amp;y=1065');"></div>
-<p class="text-[13px] text-black font-normal mb-3"></p>
-<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">흰 청바지 부담스러울 때, '보그' 에디터가 선택한 청바지!</h4>
-<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+<p class="text-[12px] text-devon-text-gray">2026.07.15</p>
 </article>
 </div>
 
@@ -473,7 +481,7 @@
 </section>
 <div class="fixed bottom-8 right-8 z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="top-button">
 <button class="flex flex-col items-center text-black hover:text-gray-500 transition-colors bg-transparent border-0 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-<svg fill="none" height="20" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5" viewbox="0 0 14 20" width="14">
+<svg fill="none" height="20" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5" viewBox="0 0 14 20" width="14">
 <path d="M7 20V1l4 4"></path>
 </svg>
 <span class="text-[10px] font-medium tracking-[0.1em] mt-1 uppercase font-display text-black">TOP</span>
@@ -680,7 +688,29 @@
                     }
                 }, { passive: true });
             }
+            // Prevent right-click to protect images
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+
+            // Prevent dragging elements (like images or divs with background)
+            document.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
+
+            // Prevent some common inspection shortcuts (optional but helps protect)
+            document.addEventListener('keydown', (e) => {
+                if (
+                    e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+                    (e.ctrlKey && e.key === 'U') ||
+                    (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+                    (e.metaKey && e.key === 'U')
+                ) {
+                    e.preventDefault();
+                }
+            });
         });
     </script>
-</body>
-</html>
+
+</body></html>
