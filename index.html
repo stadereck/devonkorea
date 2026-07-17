@@ -1,21 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devon Korea</title>
-    
-    <!-- Google Fonts: 
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Devon Korea</title>
+<!-- Google Fonts: 
          Bodoni Moda (Logo)
          Jost (Títulos en inglés gruesos)
          Noto Sans KR (Texto Coreano) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Jost:wght@500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Jost:wght@500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -25,629 +24,620 @@
                         'display': ['Jost', 'sans-serif'],
                     },
                     colors: {
-                        'vogue-gray': '#f5f5f5',
-                        'vogue-text-gray': '#888888',
+                        'devon-gray': '#f5f5f5',
+                        'devon-text-gray': '#888888',
                     }
                 }
             }
         }
     </script>
-    <style>
+<style>
         /* Tipografía específica para los encabezados de sección igual a la captura */
-        .section-title {
-            font-family: 'Jost', sans-serif;
-            font-weight: 600;
-            font-size: 32px;
-            letter-spacing: -0.01em;
-            text-transform: uppercase;
-            color: #000;
-            margin-bottom: 1.5rem;
-        }
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 42px;
-                margin-bottom: 2rem;
-            }
-        }
+        .section-title { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; text-transform: uppercase; color: #000; margin-bottom: 1.5rem; }
+
+        @media (min-width: 768px) { .section-title { font-size: 36px; font-weight: 500; margin-bottom: 2rem; letter-spacing: -0.01em; } }
 
         /* Enlaces secundarios (MORE >) */
         .section-more {
             font-family: 'Jost', sans-serif;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 11px;
             letter-spacing: 0.05em;
             color: #666;
         }
 
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         /* Animación inicial Premium de DEVON */
         #intro-wrapper {
-            position: fixed; inset: 0; background-color: #ffffff; z-index: 999999;
-            overflow: hidden; transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff;
+            z-index: 999999;
+            overflow: hidden;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
         }
     </style>
 </head>
 <body class="bg-white text-black font-sans antialiased flex flex-col min-h-screen">
-
-    <!-- Barra de Navegación Principal -->
-    <header id="main-header" class="w-full bg-white z-40 relative border-b border-gray-100">
-        <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-4 relative bg-white z-20 flex flex-col items-center">
-            
-            <!-- Botones flotantes a la derecha (Suscripción y Menú) -->
-            <div class="absolute right-4 md:right-8 top-6 flex items-center gap-4 z-30">
-                <button class="bg-black text-white text-[11px] font-bold px-4 py-2 hover:bg-gray-800 transition-colors">
+<!-- Barra de Navegación Principal -->
+<header class="w-full bg-white z-40 relative border-b border-gray-100" id="main-header">
+<div class="max-w-[1600px] mx-auto px-4 md:px-12 py-4 relative bg-white z-20 flex flex-col items-center">
+<!-- Botones flotantes a la derecha (Suscripción y Menú) -->
+<div class="absolute right-4 md:right-12 top-10 flex items-center gap-4 z-30">
+<button class="bg-black text-white text-[11px] font-bold px-4 py-2 hover:bg-gray-800 transition-colors">
                     구독하기
                 </button>
-                <button class="text-black hover:text-gray-500 transition-colors">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square">
-                        <line x1="3" y1="8" x2="21" y2="8"></line>
-                        <line x1="3" y1="16" x2="21" y2="16"></line>
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Logo Central con Instagram añadido -->
-            <div id="devon-text" class="flex flex-col items-center justify-center pt-2 pb-6 w-full opacity-0 transition-opacity duration-300">
-                <div class="relative flex flex-col items-center">
-                    <span class="text-[44px] md:text-[56px] font-bold tracking-[0.15em] text-black font-serif uppercase leading-none">
+<button class="text-black hover:text-gray-500 transition-colors">
+<svg fill="none" height="28" stroke="currentColor" stroke-linecap="square" stroke-width="1.5" viewbox="0 0 24 24" width="28">
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<line x1="3" x2="21" y1="18" y2="18"></line>
+</svg>
+</button>
+</div>
+<!-- Logo Central con Instagram añadido -->
+<div class="flex flex-col items-center justify-center pt-2 pb-6 w-full opacity-0 transition-opacity duration-300" id="devon-text">
+<div class="relative flex flex-col items-center">
+<span class="text-[50px] md:text-[80px] font-bold tracking-[0.05em] text-black font-serif uppercase leading-none">
                         DEVON
                     </span>
-                    <span class="text-[12px] md:text-[14px] font-display font-bold tracking-[0.25em] text-black uppercase mt-1 ml-[0.15em]">
+<span class="text-[14px] md:text-[20px] font-display font-normal tracking-[0.25em] text-black uppercase mt-1 ml-[0.15em]">
                         KOREA
                     </span>
-                </div>
-            </div>
-
-            <!-- Menú de Categorías inferior -->
-            <nav class="w-full flex justify-center text-[11px] md:text-[13px] font-bold tracking-widest text-black uppercase bg-white font-display pb-4">
-                <div class="flex items-center gap-6 md:gap-10">
-                    <a href="#" class="hover:text-gray-500 transition-colors">Fashion</a>
-                    <a href="#" class="hover:text-gray-500 transition-colors">Beauty</a>
-                    <a href="#" class="hover:text-gray-500 transition-colors">Living</a>
-                    <a href="#" class="hover:text-gray-500 transition-colors">Culture</a>
-                    <a href="#" class="hover:text-gray-500 transition-colors">Video</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main class="w-full flex-1 pb-20">
-        
-        <!-- Hero Banner (Captura 1 y 2) -->
-        <section class="w-full max-w-[1200px] mx-auto px-4 mb-16 mt-6">
-            <div class="w-full aspect-[4/3] md:aspect-[21/9] bg-[#e5e5e5] bg-cover bg-center relative cursor-pointer group flex items-end justify-center pb-12 overflow-hidden" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4b555c27a86-1920x960.jpg?x=1165&y=639');">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent transition-colors z-10"></div>
-                <!-- Texto Overlay al fondo centro -->
-                <div class="relative z-20 text-center text-white px-4 drop-shadow-md">
-                    <p class="text-[12px] md:text-[13px] font-bold font-sans mb-3 opacity-90">
-                        패션 아이템 &nbsp;|&nbsp; 2026.07.06
-                    </p>
-                    <h2 class="text-2xl md:text-[34px] font-bold font-sans leading-tight">
-                        '아저씨 옷'이던 체크 셔츠가 예뻐 보이기 시작했습니다
-                    </h2>
-                </div>
-            </div>
-        </section>
-
-        <div class="max-w-[1200px] mx-auto px-4 md:px-6">
-            
-            <!-- TODAY'S STORIES (Captura 2) -->
-            <section class="mb-20">
-                <h2 class="section-title">Today's Stories</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Izquierda: 1 Imagen Grande Vertical con Texto Overlay -->
-                    <article class="cursor-pointer group relative overflow-hidden">
-                        <div class="aspect-[2/3] md:aspect-[3/4] bg-gray-200 w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58606ceafca-scaled-960x1440.jpg?x=2080&y=1673?v=1784255102');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-8 left-8 right-8 text-white z-10">
-                            <p class="text-[12px] md:text-[13px] font-bold font-sans mb-3 opacity-90 tracking-wide">
-                                패션 뉴스 &nbsp;|&nbsp; 2026.07.16
-                            </p>
-                            <h3 class="text-[22px] md:text-[28px] font-bold font-sans leading-[1.3] group-hover:underline">
-                                더 가볍고 더 자유로운 샤넬 2026 가을/<br>겨울 프리 컬렉션
-                            </h3>
-                        </div>
-                    </article>
-                    
-                    <!-- Derecha: Grid 2x2 de artículos más pequeños -->
-                    <div class="grid grid-cols-2 gap-x-6 gap-y-10">
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58922d2faa1-scaled-759x500.jpg?x=1706&y=1833');"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">패션 뉴스</p>
-                            <h3 class="text-sm md:text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">윌리 차바리아, 돌아온 탕자</h3>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by VOGUE</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5729a4a0ce8-759x500.jpg?x=1320&y=1458');"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">패션 트렌드</p>
-                            <h3 class="text-sm md:text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">런웨이에서 먼저 찾은, 올가을 유행할 가방 3</h3>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 안건호, Alice Cary</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- BEST STORIES (Captura 3 y 4) -->
-        <section class="w-full relative mb-20 pt-8 pb-12">
-            <div class="absolute top-[45%] bottom-0 left-0 w-full bg-[#f4f4f4] z-0"></div>
-            <div class="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10">
-                <div class="flex items-center justify-between mb-8">
-                    <h2 class="section-title !mb-0">Best Stories</h2>
-                    <div class="flex gap-4 text-gray-400">
-                        <button class="hover:text-black transition-colors">
-                            <svg width="36" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square"><line x1="20" y1="12" x2="4" y2="12"></line><polyline points="10 18 4 12 10 6"></polyline></svg>
-                        </button>
-                        <button class="hover:text-black transition-colors">
-                            <svg width="36" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">하버드 의대가 꼽은 '장 건강·염증 잡아주는' 최고의 과일 6가지</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 박수진</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">셀럽들이 사랑하는 여름 페디큐어 컬러 15</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 박수진</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">패션 아이템</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">이제는 청바지 대신 데님 스커트입니다</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.09 <span class="mx-1">|</span> by 안건호</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">가는 모발에 볼륨과 윤기를 더해주는 최고의 샴푸를 찾았습니다</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.09 <span class="mx-1">|</span> by 박수진</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <div class="max-w-[1200px] mx-auto px-4 md:px-6">
-            <!-- MUST READ (Captura 5) -->
-            <section class="mb-20">
-                <h2 class="section-title mb-8">Must Read</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">'오디세이' 홍보 투어에서 임신부 패션의 새로운 장을 연 앤 해서웨이</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.10 <span class="mx-1">|</span> by 오기쁨</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">남자 반바지의 완벽한 표본이 등장했습니다</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.08 <span class="mx-1">|</span> by 황혜원</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-[3/4] bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">피부과 전문의들이 '젊어 보이는 손'을 위해 쓰는 핸드크림 5</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.08 <span class="mx-1">|</span> by 김주혜</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">셀럽 뉴스</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">소진-이동하, 깜짝 결혼 발표</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2023.10.06 <span class="mx-1">|</span> by 오기쁨</p>
-                    </article>
-                </div>
-            </section>
-        </div>
-
-        <!-- PEOPLE NOW (Captura 6) -->
-        <section class="w-full bg-[#f8f8f8] py-20 mb-20">
-            <div class="max-w-[1200px] mx-auto px-4 md:px-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div class="col-span-1 flex flex-col justify-center mb-8 md:mb-0">
-                        <h2 class="font-display font-bold text-4xl md:text-5xl uppercase tracking-tighter leading-none mb-4">People<br>Now</h2>
-                        <p class="text-sm font-medium text-gray-500">지금, 보그가 주목하는 인물</p>
-                    </div>
-                    <div class="col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                                <p class="text-[11px] font-bold mb-2">인터뷰</p>
-                                <h3 class="text-lg font-bold font-sans leading-snug">지금 가장 뜨거운 한국 모델, 우윤서와 파리에서 보낸 오후</h3>
-                            </div>
-                        </div>
-                        <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                                <p class="text-[11px] font-bold mb-2">데코</p>
-                                <h3 class="text-lg font-bold font-sans leading-snug">마리사 베렌슨은 아직도 작은 노트를 들고 다닌다</h3>
-                            </div>
-                        </div>
-                        <div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                                <p class="text-[11px] font-bold mb-2">인터뷰</p>
-                                <h3 class="text-lg font-bold font-sans leading-snug">어거스트 배런의 옷은 어디에도 속하지 않는다</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="max-w-[1200px] mx-auto px-4 md:px-6">
-            
-            <!-- FASHION (Captura 7 y 8) -->
-            <section class="mb-20">
-                <div class="flex items-center justify-between pt-8 mb-6">
-                    <h2 class="section-title !mb-0">Fashion</h2>
-                    <a href="#" class="section-more hover:text-black">MORE ></a>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="md:col-span-2 grid grid-cols-2 gap-x-6 gap-y-10">
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">칼립소에게서 영감을 얻은 샤를리즈 테론의 '오디세이' 홍보 투어 룩</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 오기쁨</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">패션 뉴스</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">라반의 새 크리에이티브 디렉터, 올리비에 루스텡</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 오기쁨</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">패션 아이템</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">핀터레스트 검색량 800% 증가! 폭염 속 완벽 아이템</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 황혜원</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">패션 트렌드</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">퇴근 후 약속까지 책임지는 여름 오피스 룩</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 안건호</p>
-                        </article>
-                    </div>
-                    <div class="md:col-span-1 h-full">
-                        <article class="cursor-pointer group h-full relative overflow-hidden">
-                            <div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                                <p class="text-[11px] font-bold mb-2">패션 아이템 <span class="font-normal opacity-80 mx-1">|</span> 2026.07.13</p>
-                                <h3 class="text-[20px] font-bold font-sans leading-snug">폴로 셔츠 입는 방법이 완전히 달라졌습니다</h3>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- BEAUTY (Captura 9 y 10) -->
-            <section class="mb-20">
-                <div class="flex items-center justify-between pt-8 mb-6">
-                    <h2 class="section-title !mb-0">Beauty</h2>
-                    <a href="#" class="section-more hover:text-black">MORE ></a>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="md:col-span-1 h-full">
-                        <article class="cursor-pointer group h-full relative overflow-hidden">
-                            <div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                                <p class="text-[11px] font-bold mb-2">뷰티 화보 <span class="font-normal opacity-80 mx-1">|</span> 2026.07.01</p>
-                                <h3 class="text-[20px] font-bold font-sans leading-snug">눈동자를 아름답게 관리하는 방법?</h3>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="md:col-span-2 grid grid-cols-2 gap-x-6 gap-y-10">
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">안 씻어도 된다며? 전문가가 '세척 완료' 채소도 다시 씻으라는 이유</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 황혜원</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">셀럽들이 사랑하는 여름 페디큐어 컬러 15</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 박수진</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">뷰티 트렌드</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">축 처지고 풀풀 날린다면, 셀럽들이 선택한 스칸디나비아 커트</h4>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/3] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">웰니스</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">단단함의 조건, 뼈도 관리가 필요하다</h4>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- LIVING (Captura 11) -->
-            <section class="mb-20">
-                <div class="flex items-center justify-between pt-8 mb-6">
-                    <h2 class="section-title !mb-0">Living</h2>
-                    <a href="#" class="section-more hover:text-black">MORE ></a>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">여행</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">절벽 끝의 푸른 낙원, 아야나</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.06 <span class="mx-1">|</span> by 신메지</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">여행</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">멕시코에서 삶의 궤도를 되찾다</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.03 <span class="mx-1">|</span> by 황혜원</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">여행</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">마카오의 환대는 멈추는 법이 없다</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.03 <span class="mx-1">|</span> by 유승현</p>
-                    </article>
-                    <article class="cursor-pointer group">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">Living</p>
-                        <h4 class="text-[14px] font-bold font-sans leading-snug group-hover:underline mb-3">귀를 열고, 일상을 깨우다. 샥즈가 제안하는 다채로운 데일리 루틴</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.02 <span class="mx-1">|</span> by 박한나</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- CULTURE -->
-            <section class="mb-20">
-                <div class="flex items-center justify-between pt-8 mb-6">
-                    <h2 class="section-title !mb-0">Culture</h2>
-                    <a href="#" class="section-more hover:text-black">MORE ></a>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <article class="cursor-pointer group flex flex-col">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">아트</p>
-                        <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">과거와 현재, 나와 세상을 잇는 몸짓</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.13 <span class="mx-1">|</span> by 김성희</p>
-                    </article>
-                    <article class="cursor-pointer group flex flex-col">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">엔터테인먼트</p>
-                        <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">연애사 오픈? 테일러 스위프트가 2조원대 부자가 될 수 있었던 이유</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.10 <span class="mx-1">|</span> by 박수진, Claire Cohen</p>
-                    </article>
-                    <article class="cursor-pointer group flex flex-col">
-                        <div class="aspect-square bg-gray-200 mb-4"></div>
-                        <p class="text-[11px] text-black font-bold mb-2">아트</p>
-                        <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">회화보다 적극적인 초대, '환경 미술' 목격자 자처하기</h4>
-                        <p class="text-[10px] text-vogue-text-gray">2026.07.10 <span class="mx-1">|</span> by 하송희</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- LATEST STORIES -->
-            <section class="mb-10">
-                <div class="pt-8 mb-6">
-                    <h2 class="section-title !mb-0">Latest Stories</h2>
-                </div>
-                
-                <div class="flex flex-col md:flex-row gap-6 relative">
-                    <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-                        <!-- Fila 1 -->
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-square bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">제이지 콘서트 스페셜 게스트 리한나의 생 로랑 커스텀 룩</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 오기쁨</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/5] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">패션 아이템</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">휴가 앞두고 급하게 사지 말고, 청바지와 스커트에 '여름 신발'</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 하송희, Augustine Hammond</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-square bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">'나이키 걸' 리사의 월드컵 응원 룩</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.13 <span class="mx-1">|</span> by 오기쁨</p>
-                        </article>
-                        
-                        <!-- Fila 2 -->
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-square bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">지지 하디드가 꽂힌 여름의 색, 레몬 옐로</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.13 <span class="mx-1">|</span> by 오기쁨</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-square bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">여름에는 '이 아이템' 하나만 잘 고르면 끝입니다</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.13 <span class="mx-1">|</span> by 안건호</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-square bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">청바지에 흰 탱크 톱? 정답은 빨간 슈즈입니다</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.13 <span class="mx-1">|</span> by 황혜원</p>
-                        </article>
-
-                        <!-- Fila 3 -->
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-[4/5] bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">엘리 사브 아카이브로 완성한 제니의 매드 쿨 페스티벌 룩</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.13 <span class="mx-1">|</span> by 오기쁨</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-square bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">패션 아이템</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">치마처럼 예쁜데 훨씬 편합니다, 올여름 '눈속임 스커트'</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.14 <span class="mx-1">|</span> by 김현유, Nuria Luis</p>
-                        </article>
-                        <article class="cursor-pointer group flex flex-col">
-                            <div class="aspect-square bg-gray-200 mb-4"></div>
-                            <p class="text-[11px] text-black font-bold mb-2">셀러브리티 스타일</p>
-                            <h4 class="text-[15px] font-bold font-sans leading-snug group-hover:underline mb-3">엄마가 입던 그 원피스, 요즘 입어요!</h4>
-                            <p class="text-[10px] text-vogue-text-gray">2026.07.13 <span class="mx-1">|</span> by 황혜원</p>
-                        </article>
-                    </div>
-
-                    <div class="w-full md:w-1/4 hidden md:block">
-                        <div class="sticky top-24 w-full bg-white border-[12px] border-[#222] rounded-[2.5rem] shadow-xl overflow-hidden flex flex-col" style="aspect-ratio: 9/19;">
-                            <div class="p-4 flex flex-col border-b border-gray-100">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white font-serif text-[12px] tracking-widest leading-none">D</div>
-                                    <div class="flex-1">
-                                        <p class="text-[12px] font-bold text-black leading-tight tracking-tight">@DEVON KOREA</p>
-                                        <p class="text-[9px] text-gray-500 font-bold tracking-wider">Now on <span class="text-red-600">▶</span> YOUTUBE</p>
-                                    </div>
-                                </div>
-                                <button class="w-full bg-[#333] text-white text-[10px] font-bold py-2 rounded-full mb-3 uppercase tracking-wider hover:bg-black transition-colors">Subscribe</button>
-                                <div class="flex gap-4 text-[10px] font-bold pb-1 text-gray-400">
-                                    <span>Home</span>
-                                    <span class="text-black border-b-2 border-black pb-1">Videos</span>
-                                    <span>Shorts</span>
-                                    <span>Playlists</span>
-                                </div>
-                            </div>
-                            
-                            <div class="flex-1 overflow-y-auto bg-white p-3 flex flex-col gap-4 hide-scrollbar">
-                                <div class="flex gap-3">
-                                    <div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
-                                    <div class="flex-1 flex flex-col gap-1 justify-center">
-                                        <div class="h-2 bg-gray-200 w-full rounded"></div>
-                                        <div class="h-2 bg-gray-200 w-4/5 rounded"></div>
-                                    </div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
-                                    <div class="flex-1 flex flex-col gap-1 justify-center">
-                                        <div class="h-2 bg-gray-200 w-full rounded"></div>
-                                        <div class="h-2 bg-gray-200 w-2/3 rounded"></div>
-                                    </div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
-                                    <div class="flex-1 flex flex-col gap-1 justify-center">
-                                        <div class="h-2 bg-gray-200 w-full rounded"></div>
-                                        <div class="h-2 bg-gray-200 w-3/4 rounded"></div>
-                                    </div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
-                                    <div class="flex-1 flex flex-col gap-1 justify-center">
-                                        <div class="h-2 bg-gray-200 w-full rounded"></div>
-                                        <div class="h-2 bg-gray-200 w-1/2 rounded"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="w-full bg-black text-white text-center py-3 text-[12px] font-bold tracking-widest cursor-pointer hover:bg-gray-900 transition-colors">
+</div>
+</div>
+<!-- Menú de Categorías inferior -->
+<nav class="w-full flex justify-center text-[12px] md:text-[14px] font-normal tracking-widest text-black uppercase bg-white font-display pb-4">
+<div class="flex items-center gap-12 md:gap-16">
+<a class="hover:text-gray-500 transition-colors" href="#">Fashion</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Beauty</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Living</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Culture</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Video</a>
+</div>
+</nav>
+</div>
+</header>
+<main class="w-full flex-1 pb-20">
+<!-- Hero Banner (Captura 1 y 2) -->
+<section class="w-full max-w-[1600px] mx-auto px-4 mb-16 mt-6">
+<div class="w-full aspect-[4/3] md:aspect-[21/9] bg-[#e5e5e5] bg-cover bg-center relative cursor-pointer group flex items-end justify-center pb-12 overflow-hidden" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4b555c27a86-1920x960.jpg?x=1165&amp;y=639');">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent transition-colors z-10">
+</div>
+<!-- Texto Overlay al fondo centro -->
+<div class="relative z-20 text-center text-white px-4 drop-shadow-md">
+<p class="text-[12px] md:text-[13px] font-normal font-sans mb-3 opacity-90">패션 아이템  |  2026.07.06</p>
+<h2 class="text-2xl md:text-[34px] font-semibold font-sans leading-tight">‘아저씨 옷’이던 체크 셔츠가 예뻐 보이기 시작했습니다</h2>
+</div>
+</div>
+</section>
+<div class="max-w-[1600px] mx-auto px-4 md:px-12">
+<!-- TODAY'S STORIES (Captura 2) -->
+<section class="mb-20">
+<h2 class="section-title">Today's Stories</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Izquierda: 1 Imagen Grande Vertical con Texto Overlay -->
+<article class="cursor-pointer group relative overflow-hidden">
+<div class="aspect-[2/3] md:aspect-[3/4] bg-gray-200 w-full bg-cover bg-top transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55998488a76-1920x960.jpg?x=1280&amp;y=1132');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 text-white z-10">
+<p class="text-[12px] md:text-[13px] font-normal font-sans mb-3 opacity-90 tracking-wide">패션 아이템 | 2026.07.14</p>
+<h3 class="text-[22px] md:text-[28px] font-semibold font-sans leading-[1.3] group-hover:underline">휴가 앞두고 급하게 사지 말고, 청바지와 스커트에 ‘여름 신발’</h3>
+</div>
+</article>
+<!-- Derecha: Grid 2x2 de artículos más pequeños -->
+<div class="grid grid-cols-2 gap-x-10 gap-y-16">
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58606ceafca-scaled-960x1440.jpg?x=2080&amp;y=1673?v=1784258402');">
+</div>
+<p class="text-[13px] text-black font-normal mb-3">패션 뉴스</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">더 가볍고 더 자유로운 샤넬 2026 가을/겨울 프리 컬렉션</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58922d2faa1-scaled-759x500.jpg?x=1706&amp;y=1833');">
+</div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">검은 머리 질렸다면? 제니퍼 로렌스처럼 '여름 브라운'이 답입니다</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5729a4a0ce8-759x500.jpg?x=1320&amp;y=1458');">
+</div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">영국 '보그' 에디터들이 꼽은, 종일 신어도 발이 멀쩡한 힐</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a58703f5a7c4-759x500.jpg?x=1170&amp;y=1564');">
+</div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">프렌치 걸 vs 스칸디나비아 걸, 스타일 대결의 승자는?</h3>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+</div>
+</div>
+</section>
+</div>
+<!-- BEST STORIES (Captura 3 y 4) -->
+<section class="w-full relative mb-20 pt-8 pb-12">
+<div class="absolute top-[45%] bottom-0 left-0 w-full bg-[#f4f4f4] z-0"></div>
+<div class="max-w-[1600px] mx-auto px-4 md:px-12 relative z-10">
+<div class="flex items-center justify-between mb-8">
+<h2 class="section-title !mb-0">Best Stories</h2>
+<div class="flex gap-4 text-gray-400">
+<button class="hover:text-black transition-colors">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="square" stroke-width="0.5" viewbox="0 0 24 24" width="36">
+<line x1="20" x2="4" y1="12" y2="12"></line>
+<polyline points="10 18 4 12 10 6"></polyline>
+</svg>
+</button>
+<button class="hover:text-black transition-colors">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="square" stroke-width="0.5" viewbox="0 0 24 24" width="36">
+<line x1="4" x2="20" y1="12" y2="12"></line>
+<polyline points="14 6 20 12 14 18"></polyline>
+</svg>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+<article class="cursor-pointer group">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a587b2a80b2a-759x500.jpg');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">지금 물방울무늬를 입는 가장 멋스러운 방법 5</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a572c9ce78b0-scaled-759x500.jpg?x=1824&amp;y=2115');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">머리 길이는 유지하면서 갈라진 끝만 다듬는 헤어 커트를 해봤습니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55adcd878d1-scaled-759x500.jpg?x=1656&amp;y=1675');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">셀럽들이 사랑하는 여름 페디큐어 컬러 15</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a57032512854-scaled-759x500.jpg?x=2560&amp;y=2571');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">젠데이아, 날개 달린 드레스로 '오디세이' 홍보 투어 피날레 장식</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+</div>
+</div>
+</section>
+<div class="max-w-[1600px] mx-auto px-4 md:px-12">
+<!-- MUST READ (Captura 5) -->
+<section class="mb-20">
+<h2 class="section-title mb-8">Must Read</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a55edb7d5892-scaled-759x500.jpg?x=2048&amp;y=2379');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">칼립소에게서 영감을 얻은 샤를리즈 테론의 '오디세이' 홍보 투어 룩</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f92d1c374f-759x500.jpg?x=1170&amp;y=1691');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">하버드 의대가 꼽은 '장 건강·염증 잡아주는' 최고의 과일 6가지</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-[3/4] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5749f2da43e-759x500.jpg?x=1170&amp;y=1228');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">얼굴이 훨씬 어려 보이는, 볼 터치 바르는 법 3</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a56f97da231f-scaled-759x500.jpg?x=1707&amp;y=2548');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름엔 건강한 일본식 젤 네일이 대세입니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+</div>
+</section>
+</div>
+<!-- PEOPLE NOW (Captura 6) -->
+<section class="w-full bg-[#f8f8f8] py-20 mb-20">
+<div class="max-w-[1600px] mx-auto px-4 md:px-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 flex flex-col justify-center mb-8 md:mb-0">
+<h2 class="font-display font-bold text-4xl md:text-5xl uppercase tracking-tighter leading-none mb-4">
+                            People<br/>Now</h2>
+<p class="text-sm font-medium text-gray-500">지금, 데본이 주목하는 인물</p>
+</div>
+<div class="col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-10">
+<div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+</div>
+<div class="absolute bottom-6 left-6 right-6 text-white z-10">
+<p class="text-[11px] font-bold mb-2">인터뷰</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">지금 가장 뜨거운 한국 모델, 우윤서와 파리에서 보낸 오후
+                                </h3>
+</div>
+</div>
+<div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+</div>
+<div class="absolute bottom-6 left-6 right-6 text-white z-10">
+<p class="text-[11px] font-bold mb-2">데코</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">마리사 베렌슨은 아직도 작은 노트를 들고 다닌다</h3>
+</div>
+</div>
+<div class="aspect-[2/3] bg-gray-300 relative cursor-pointer group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+</div>
+<div class="absolute bottom-6 left-6 right-6 text-white z-10">
+<p class="text-[11px] font-bold mb-2">인터뷰</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">어거스트 배런의 옷은 어디에도 속하지 않는다</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="max-w-[1600px] mx-auto px-4 md:px-12">
+<!-- FASHION (Captura 7 y 8) -->
+<section class="mb-20">
+<div class="flex items-center justify-between pt-8 mb-6">
+<h2 class="section-title !mb-0">Fashion</h2>
+<a class="section-more hover:text-black" href="#">MORE &gt;</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<div class="md:col-span-2 grid grid-cols-2 gap-x-10 gap-y-16">
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a547fe9573d6-scaled-759x500.jpg?x=2635&amp;y=2450');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">축 처지고 풀풀 날린다면, 셀럽들이 선택한 스칸디나비아 커트</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f3ac3d838b-500x500.jpg?x=1537&amp;y=1729');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">이제는 청바지 대신 데님 스커트입니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f74f423fef-500x500.jpg?x=1080&amp;y=1080');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">가는 모발에 볼륨과 윤기를 더해주는 최고의 샴푸를 찾았습니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f691153486-500x500.jpg?x=1093&amp;y=1100');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름 유행하는 반바지를 입는 모든 방법</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+</div>
+<div class="md:col-span-1 h-full">
+<article class="cursor-pointer group h-full relative overflow-hidden">
+<div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a2a75705fcad-scaled-500x500.jpg?x=2559&amp;y=1999');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent">
+</div>
+<div class="absolute bottom-6 left-6 right-6 text-white z-10">
+<p class="text-[11px] font-bold mb-2"> | 2026.07.16</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">렉서스가 밀란 디자인 위크에서 제시한 개인 공간의 미래에 대한 비전</h3>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- BEAUTY (Captura 9 y 10) -->
+<section class="mb-20">
+<div class="flex items-center justify-between pt-8 mb-6">
+<h2 class="section-title !mb-0">Beauty</h2>
+<a class="section-more hover:text-black" href="#">MORE &gt;</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<div class="md:col-span-1 h-full">
+<article class="cursor-pointer group h-full relative overflow-hidden">
+<div class="w-full h-full min-h-[400px] md:min-h-full bg-gray-200 absolute inset-0 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2025/09/style_68d20b0dd504e-700x1050.jpg?x=4113&amp;y=4948');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+</div>
+<div class="absolute bottom-6 left-6 right-6 text-white z-10">
+<p class="text-[11px] font-bold mb-2"> | 2026.07.16</p>
+<h3 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug">코르티스, 지금 가장 새로운</h3>
+</div>
+</article>
+</div>
+<div class="md:col-span-2 grid grid-cols-2 gap-x-10 gap-y-16">
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a38a545d070e-scaled-700x1050.jpg?x=2389&amp;y=1702');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">당신의 꿈속에서 연준이 보낸 시간</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2025/08/style_6892e72e07969-700x1050.jpg?x=4777&amp;y=4617');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">그렇게 여름이 된 순간, 한로로</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5852d131d9a-scaled-759x500.jpg?x=1748&amp;y=1791');"></div>
+<p class="text-[13px] text-black font-normal mb-3"> | 2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">유행 중인 미디스커트에 탱크 톱, 지지 하디드가 입으면?</h4>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/3] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5840f1168ca-759x500.jpg?x=1607&amp;y=1597');"></div>
+<p class="text-[13px] text-black font-normal mb-3"> | 2026.07.16</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">티모시 샬라메와 데이비드 베컴은 월드컵 응원할 때 무엇을 입을까요?</h4>
+</article>
+</div>
+</div>
+</section>
+<!-- LIVING (Captura 11) -->
+<section class="mb-20">
+<div class="flex items-center justify-between pt-8 mb-6">
+<h2 class="section-title !mb-0">Living</h2>
+<a class="section-more hover:text-black" href="#">MORE &gt;</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5754ded6657-759x500.jpg?x=1179&amp;y=1179');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름, 티셔츠는 두 사이즈 크게 입으세요!</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5474d2b060e-759x500.jpg?x=899&amp;y=1011');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름 쉽게 근사해지는 법, 헐렁한 청바지에 ‘이것’만 매치하세요</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a3b7327462dd-scaled-960x1440.jpg?x=2003&amp;y=1883');"></div>
+<p class="text-[13px] text-black font-normal mb-3">뷰티 화보</p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">뷰티 전문가 8인이 꼽은 궁극의 브러시</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.09</p>
+</article>
+<article class="cursor-pointer group">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5498ea2074d-scaled-759x500.jpg?x=1991&amp;y=1956');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">정원의 향을 맡고, 흙의 중심을 잡는 도예가 이경환</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+</div>
+</section>
+<!-- CULTURE -->
+<section class="mb-20">
+<div class="flex items-center justify-between pt-8 mb-6">
+<h2 class="section-title !mb-0">Culture</h2>
+<a class="section-more hover:text-black" href="#">MORE &gt;</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5882cf0c4ec-scaled-759x500.jpg?x=1920&amp;y=2076');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">마트 샴푸도 괜찮을까? 전문가들의 답은 의외였습니다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a1e9eb1293ce-500x500.jpg');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">절벽 끝의 푸른 낙원, 아야나</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a3b377a227f7-scaled-e1782265759522-500x500.jpg?x=1919&amp;y=2557');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">멕시코에서 삶의 궤도를 되찾다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+</div>
+</section>
+<!-- LATEST STORIES -->
+<section class="mb-10">
+<div class="pt-8 mb-6">
+<h2 class="section-title !mb-0">Latest Stories</h2>
+</div>
+<div class="flex flex-col md:flex-row gap-10 relative">
+<div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+<!-- Fila 1 -->
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/06/style_6a3b2fc630f5f-500x500.jpg');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">마카오의 환대는 멈추는 법이 없다</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/5] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a546a5186da3-500x500.jpg');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">과거와 현재, 나와 세상을 잇는 몸짓</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4fb130e88bc-scaled-500x500.jpg?x=2565&amp;y=2134');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">연애사 오픈? 테일러 스위프트가 2조원대 부자가 될 수 있었던 이유</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<!-- Fila 2 -->
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a50785088065-scaled-500x500.jpg?x=2300&amp;y=2109');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">회화보다 적극적인 초대, ‘환경 미술’ 목격자 자처하기</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a4f9dcb5fbc1-500x500.jpg?x=1052&amp;y=973');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">시청률 20% 돌파, 파죽지세 ‘김부장’의 매력과 논란</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5734f431375-500x500.jpg?x=1170&amp;y=1201');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">유럽 폭염에 오히려 인기 폭발한 K-크림!</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<!-- Fila 3 -->
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-[4/5] bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a570f1a6e88f-500x500.jpg?x=1080&amp;y=1080');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">헤일리 비버, 갭과 함께 1990년대 감성 녹인 데님 컬렉션 출시</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a5704e302221-500x500.jpg?x=1586&amp;y=1848');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">올여름에는 플립플롭이나 운동화 대신 로퍼를 신으세요</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+<article class="cursor-pointer group flex flex-col">
+<div class="aspect-square bg-gray-200 mb-4 bg-cover bg-center" style="background-image: url('https://img.vogue.co.kr/vogue/2026/07/style_6a56f4c275560-500x500.jpg?x=1188&amp;y=1065');"></div>
+<p class="text-[13px] text-black font-normal mb-3"></p>
+<h4 class="text-[18px] md:text-[22px] font-semibold font-sans leading-snug group-hover:underline mb-3">흰 청바지 부담스러울 때, '보그' 에디터가 선택한 청바지!</h4>
+<p class="text-[12px] text-devon-text-gray">2026.07.16</p>
+</article>
+</div>
+<div class="w-full md:w-1/4 hidden md:block">
+<div class="sticky top-24 w-full bg-white border-[12px] border-[#222] rounded-[2.5rem] shadow-xl overflow-hidden flex flex-col" style="aspect-ratio: 9/19;">
+<div class="p-4 flex flex-col border-b border-gray-100">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white font-serif text-[12px] tracking-widest leading-none">
+                                        D</div>
+<div class="flex-1">
+<p class="text-[12px] font-normal text-black leading-tight tracking-tight">@DEVON
+                                            KOREA</p>
+<p class="text-[9px] text-gray-500 font-medium tracking-wider">Now on <span class="text-red-600">▶</span> YOUTUBE</p>
+</div>
+</div>
+<button class="w-full bg-[#333] text-white text-[10px] font-medium py-2 rounded-full mb-3 uppercase tracking-wider hover:bg-black transition-colors">Subscribe</button>
+<div class="flex gap-4 text-[10px] font-medium pb-1 text-gray-400">
+<span>Home</span>
+<span class="text-black border-b-2 border-black pb-1">Videos</span>
+<span>Shorts</span>
+<span>Playlists</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto bg-white p-3 flex flex-col gap-4 hide-scrollbar">
+<div class="flex gap-3">
+<div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
+<div class="flex-1 flex flex-col gap-1 justify-center">
+<div class="h-2 bg-gray-200 w-full rounded"></div>
+<div class="h-2 bg-gray-200 w-4/5 rounded"></div>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
+<div class="flex-1 flex flex-col gap-1 justify-center">
+<div class="h-2 bg-gray-200 w-full rounded"></div>
+<div class="h-2 bg-gray-200 w-2/3 rounded"></div>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
+<div class="flex-1 flex flex-col gap-1 justify-center">
+<div class="h-2 bg-gray-200 w-full rounded"></div>
+<div class="h-2 bg-gray-200 w-3/4 rounded"></div>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-20 h-12 bg-gray-200 rounded shrink-0"></div>
+<div class="flex-1 flex flex-col gap-1 justify-center">
+<div class="h-2 bg-gray-200 w-full rounded"></div>
+<div class="h-2 bg-gray-200 w-1/2 rounded"></div>
+</div>
+</div>
+</div>
+<div class="w-full bg-black text-white text-center py-3 text-[12px] font-normal tracking-widest cursor-pointer hover:bg-gray-900 transition-colors">
                                 click here »
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <div class="flex justify-end pb-8">
-                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-black hover:text-gray-500 transition-colors">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-                    <span class="text-[10px] font-bold tracking-widest mt-1 uppercase">Top</span>
-                </button>
-            </div>
-            
-        </div>
-    </main>
-
-    <!-- FOOTER minimalista estilo captura (Negro) -->
-    <footer class="bg-black text-white py-16 text-center font-sans mt-0 relative z-[9999]">
-        <div class="max-w-[1200px] mx-auto px-4 flex flex-col items-center relative z-20">
-            <!-- Logo Central del Footer con Instagram añadido -->
-            <div class="flex flex-col items-center justify-center mb-10">
-                <div class="relative flex flex-col items-center">
-                    <span class="text-[44px] md:text-[56px] font-bold tracking-[0.15em] text-white font-serif uppercase leading-none">
+</div>
+</div>
+</div>
+</section>
+<div class="fixed bottom-8 right-8 z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="top-button">
+<button class="flex flex-col items-center text-black hover:text-gray-500 transition-colors bg-transparent border-0 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<svg fill="none" height="20" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5" viewbox="0 0 14 20" width="14">
+<path d="M7 20V1l4 4"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-[0.1em] mt-1 uppercase font-display text-black">TOP</span>
+</button>
+</div>
+</div>
+</main>
+<!-- FOOTER minimalista estilo captura (Negro) -->
+<footer class="bg-black text-white py-16 text-center font-sans mt-0 relative z-[9999]">
+<div class="max-w-[1600px] mx-auto px-4 flex flex-col items-center relative z-20">
+<!-- Logo Central del Footer con Instagram añadido -->
+<div class="flex flex-col items-center justify-center mb-10">
+<div class="relative flex flex-col items-center">
+<span class="text-[50px] md:text-[80px] font-bold tracking-[0.05em] text-white font-serif uppercase leading-none">
                         DEVON
                     </span>
-                    <span class="text-[12px] md:text-[14px] font-display font-bold tracking-[0.25em] text-white uppercase mt-1 ml-[0.15em]">
+<span class="text-[14px] md:text-[20px] font-display font-normal tracking-[0.25em] text-white uppercase mt-1 ml-[0.15em]">
                         KOREA
                     </span>
-                </div>
-            </div>
-            
-            <!-- Enlaces Coreanos -->
-            <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-[12px] font-bold text-white mb-10 tracking-tight">
-                <a href="#" class="hover:text-gray-400 transition-colors">정기구독</a>
-                <span class="text-[#333] text-[10px]">|</span>
-                <a href="#" class="hover:text-gray-400 transition-colors">회사소개</a>
-                <span class="text-[#333] text-[10px]">|</span>
-                <a href="#" class="hover:text-gray-400 transition-colors">광고/제휴</a>
-                <span class="text-[#333] text-[10px]">|</span>
-                <a href="#" class="hover:text-gray-400 transition-colors">개인정보 처리방침</a>
-                <span class="text-[#333] text-[10px]">|</span>
-                <a href="#" class="hover:text-gray-400 transition-colors">공지사항</a>
-            </div>
-
-            <!-- Botón de Idioma/Región -->
-            <div class="relative flex justify-center w-full mt-4 mb-12">
-                <button id="country-selector-btn" class="border border-[#333] bg-black text-white px-8 py-3 text-[13px] font-bold tracking-[0.15em] uppercase hover:border-[#666] transition-colors flex items-center justify-center gap-4 cursor-pointer relative z-50">
+</div>
+</div>
+<!-- Enlaces Coreanos -->
+<div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-[12px] font-normal text-white mb-10 tracking-tight">
+<a class="hover:text-gray-400 transition-colors" href="#">정기구독</a>
+<span class="text-[#333] text-[10px]">|</span>
+<a class="hover:text-gray-400 transition-colors" href="#">회사소개</a>
+<span class="text-[#333] text-[10px]">|</span>
+<a class="hover:text-gray-400 transition-colors" href="#">광고/제휴</a>
+<span class="text-[#333] text-[10px]">|</span>
+<a class="hover:text-gray-400 transition-colors" href="#">개인정보 처리방침</a>
+<span class="text-[#333] text-[10px]">|</span>
+<a class="hover:text-gray-400 transition-colors" href="#">공지사항</a>
+</div>
+<!-- Botón de Idioma/Región -->
+<div class="relative flex justify-center w-full mt-4 mb-12">
+<button class="border border-[#333] bg-black text-white px-8 py-3 text-[13px] font-medium tracking-[0.05em] uppercase hover:border-[#666] transition-colors flex items-center justify-center gap-4 cursor-pointer relative z-50" id="country-selector-btn">
                     KOREA <span class="text-[10px]">▲</span>
-                </button>
-                
-                <div id="country-dropdown" class="absolute bottom-[calc(100%+8px)] left-1/2 transform -translate-x-1/2 w-[280px] bg-white hidden flex-col z-[100] max-h-[380px] overflow-y-auto py-4 hide-scrollbar shadow-[0_0_40px_rgba(0,0,0,0.8)]">
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">ARABIA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">AUSTRALIA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">BRASIL</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">BRITAIN</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">CHINA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">CZECHOSLOVAKIA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">ESPAÑA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">FRANCE</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">GERMANY</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">GREECE</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">HONG KONG</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">INDIA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">ITALIA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">JAPAN</a>
-                    <a href="https://devonrevista.vercel.app" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">MÉXICO</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">NEDERLAND</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">PHILIPPINES</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">POLSKA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">PORTUGAL</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">SCANDINAVIA</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">SINGAPORE</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">TAIWAN</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">THAILAND</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">TÜRKIYE</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">UKRAINE</a>
-                    <a href="#" class="block px-8 py-3 text-[13px] font-display font-bold tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left">UNITED STATES</a>
-                </div>
-            </div>
-
-            <p class="text-[10px] text-[#666] uppercase tracking-widest font-bold">VOGUE.CO.KR IS OPERATED BY DOOSAN MAGAZINE</p>
-        </div>
-    </footer>
-
-    <script>
+</button>
+<div class="absolute bottom-[calc(100%+8px)] left-1/2 transform -translate-x-1/2 w-[280px] bg-white hidden flex-col z-[100] max-h-[380px] overflow-y-auto py-4 hide-scrollbar shadow-[0_0_40px_rgba(0,0,0,0.8)]" id="country-dropdown">
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">ARABIA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">AUSTRALIA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">BRASIL</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">BRITAIN</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">CHINA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">CZECHOSLOVAKIA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">ESPAÑA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">FRANCE</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">GERMANY</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">GREECE</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">HONG
+                        KONG</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">INDIA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">ITALIA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">JAPAN</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="https://devonrevista.vercel.app">MÉXICO</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">NEDERLAND</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">PHILIPPINES</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">POLSKA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">PORTUGAL</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">SCANDINAVIA</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">SINGAPORE</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">TAIWAN</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">THAILAND</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">TÜRKIYE</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">UKRAINE</a>
+<a class="block px-8 py-3 text-[13px] font-display font-medium tracking-[0.1em] text-[#999] hover:text-black transition-colors uppercase text-left" href="#">UNITED
+                        STATES</a>
+</div>
+</div>
+<p class="text-[10px] text-[#666] uppercase tracking-widest font-bold">DEVONKOREA.COM IS OPERATED BY DOOSAN
+                MAGAZINE</p>
+</div>
+</footer>
+<script>
         document.addEventListener('DOMContentLoaded', () => {
             const countryBtn = document.getElementById('country-selector-btn');
             const countryDropdown = document.getElementById('country-dropdown');
@@ -668,7 +658,7 @@
 
             const introWrapper = document.createElement('div');
             introWrapper.id = 'intro-wrapper';
-            introWrapper.style.backgroundColor = '#ffffff'; 
+            introWrapper.style.backgroundColor = '#ffffff';
             document.body.appendChild(introWrapper);
             document.body.style.overflow = 'hidden';
 
@@ -678,33 +668,67 @@
             finalLogo.textContent = 'DEVON';
             finalLogo.className = 'font-serif text-black font-bold tracking-[0.2em] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 scale-95 uppercase';
             finalLogo.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-            finalLogo.style.fontSize = 'clamp(3rem, 12vw, 10rem)'; 
+            finalLogo.style.fontSize = 'clamp(3rem, 12vw, 10rem)';
             introWrapper.appendChild(finalLogo);
-            
+
             void finalLogo.offsetWidth;
-            
+
             finalLogo.style.opacity = '1';
             finalLogo.style.transform = 'translate(-50%, -50%) scale(1)';
 
             setTimeout(() => {
-                const realLogoTextSpan = realLogo.querySelector('span'); 
+                const realLogoTextSpan = realLogo.querySelector('span');
                 const targetRect = realLogoTextSpan.getBoundingClientRect();
-                
+
                 introWrapper.style.transition = 'background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                 introWrapper.style.backgroundColor = 'transparent';
-                
+
                 finalLogo.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                 finalLogo.style.top = (targetRect.top + (targetRect.height / 2)) + 'px';
                 finalLogo.style.fontSize = window.getComputedStyle(realLogoTextSpan).fontSize;
-                
+
                 document.body.style.overflow = '';
 
                 setTimeout(() => {
                     finalLogo.style.opacity = '0';
-                    if(realLogo) realLogo.style.opacity = '1'; 
+                    if (realLogo) realLogo.style.opacity = '1';
                     setTimeout(() => { introWrapper.remove(); }, 500);
                 }, 800);
-            }, 1800); 
+            }, 1800);
+
+            // TOP Button Logic
+            const topBtnContainer = document.getElementById('top-button');
+            if (topBtnContainer) {
+                window.addEventListener('scroll', () => {
+                    // Hide at very top
+                    if (window.scrollY < 300) {
+                        topBtnContainer.classList.add('opacity-0', 'pointer-events-none');
+                        return;
+                    }
+                    
+                    const rect = topBtnContainer.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+                    
+                    const elements = document.elementsFromPoint(cx, cy);
+                    let overImage = false;
+                    for (let el of elements) {
+                        if (el.tagName.toLowerCase() === 'img') {
+                            overImage = true; break;
+                        }
+                        const bg = window.getComputedStyle(el).backgroundImage;
+                        if (bg && bg !== 'none' && bg !== 'initial') {
+                            overImage = true; break;
+                        }
+                    }
+                    
+                    if (overImage) {
+                        topBtnContainer.classList.add('opacity-0', 'pointer-events-none');
+                    } else {
+                        topBtnContainer.classList.remove('opacity-0', 'pointer-events-none');
+                    }
+                }, { passive: true });
+            }
         });
     </script>
 </body>
